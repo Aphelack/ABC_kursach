@@ -1,0 +1,4078 @@
+{
+  "system_info": {
+    "cpu": {
+      "physical_cores": 36,
+      "logical_cores": 72,
+      "cpu_freq": {
+        "current": 1.2666527777777792,
+        "min": 1200.0,
+        "max": 3600.0
+      },
+      "cpu_percent": 0.9
+    },
+    "memory": {
+      "total": 540895662080,
+      "available": 447357718528,
+      "percent": 17.3,
+      "used": 89420574720,
+      "free": 24776970240,
+      "active": 136106319872,
+      "inactive": 347248029696,
+      "buffers": 15862190080,
+      "cached": 410835927040,
+      "shared": 598835200,
+      "slab": 28107784192
+    },
+    "timestamp": "2025-11-02T21:08:38.184474"
+  },
+  "test_config": {
+    "estimators": [
+      50,
+      100,
+      200
+    ],
+    "max_depth": 20,
+    "num_runs": 3,
+    "random_state": 42
+  },
+  "results": {
+    "50": {
+      "times": [
+        0.9830931900069118,
+        0.9347966434434056,
+        1.0960668753832579
+      ],
+      "accuracies": [
+        0.9655,
+        0.9646,
+        0.9658
+      ],
+      "cpu_monitor_data": [
+        {
+          "duration_seconds": 0.5055654048919678,
+          "total_avg_usage": 45.327083333333334,
+          "total_max_usage": 47.84166666666667,
+          "total_min_usage": 42.8125,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 54.4,
+              "max_usage": 60.8,
+              "min_usage": 48.0
+            },
+            {
+              "core": 1,
+              "avg_usage": 73.05,
+              "max_usage": 75.5,
+              "min_usage": 70.6
+            },
+            {
+              "core": 2,
+              "avg_usage": 59.7,
+              "max_usage": 69.4,
+              "min_usage": 50.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 63.4,
+              "max_usage": 68.0,
+              "min_usage": 58.8
+            },
+            {
+              "core": 4,
+              "avg_usage": 63.55,
+              "max_usage": 80.0,
+              "min_usage": 47.1
+            },
+            {
+              "core": 5,
+              "avg_usage": 68.0,
+              "max_usage": 70.0,
+              "min_usage": 66.0
+            },
+            {
+              "core": 6,
+              "avg_usage": 78.0,
+              "max_usage": 90.0,
+              "min_usage": 66.0
+            },
+            {
+              "core": 7,
+              "avg_usage": 67.35,
+              "max_usage": 70.0,
+              "min_usage": 64.7
+            },
+            {
+              "core": 8,
+              "avg_usage": 69.35,
+              "max_usage": 72.0,
+              "min_usage": 66.7
+            },
+            {
+              "core": 9,
+              "avg_usage": 71.05,
+              "max_usage": 73.5,
+              "min_usage": 68.6
+            },
+            {
+              "core": 10,
+              "avg_usage": 73.4,
+              "max_usage": 86.0,
+              "min_usage": 60.8
+            },
+            {
+              "core": 11,
+              "avg_usage": 75.9,
+              "max_usage": 87.8,
+              "min_usage": 64.0
+            },
+            {
+              "core": 12,
+              "avg_usage": 67.0,
+              "max_usage": 68.0,
+              "min_usage": 66.0
+            },
+            {
+              "core": 13,
+              "avg_usage": 66.2,
+              "max_usage": 75.5,
+              "min_usage": 56.9
+            },
+            {
+              "core": 14,
+              "avg_usage": 73.55,
+              "max_usage": 92.2,
+              "min_usage": 54.9
+            },
+            {
+              "core": 15,
+              "avg_usage": 17.15,
+              "max_usage": 28.0,
+              "min_usage": 6.3
+            },
+            {
+              "core": 16,
+              "avg_usage": 73.0,
+              "max_usage": 84.0,
+              "min_usage": 62.0
+            },
+            {
+              "core": 17,
+              "avg_usage": 66.55,
+              "max_usage": 78.0,
+              "min_usage": 55.1
+            },
+            {
+              "core": 18,
+              "avg_usage": 57.1,
+              "max_usage": 60.0,
+              "min_usage": 54.2
+            },
+            {
+              "core": 19,
+              "avg_usage": 55.0,
+              "max_usage": 60.0,
+              "min_usage": 50.0
+            },
+            {
+              "core": 20,
+              "avg_usage": 52.95,
+              "max_usage": 58.8,
+              "min_usage": 47.1
+            },
+            {
+              "core": 21,
+              "avg_usage": 56.0,
+              "max_usage": 60.0,
+              "min_usage": 52.0
+            },
+            {
+              "core": 22,
+              "avg_usage": 54.0,
+              "max_usage": 56.0,
+              "min_usage": 52.0
+            },
+            {
+              "core": 23,
+              "avg_usage": 59.8,
+              "max_usage": 68.6,
+              "min_usage": 51.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 57.15,
+              "max_usage": 65.3,
+              "min_usage": 49.0
+            },
+            {
+              "core": 25,
+              "avg_usage": 43.15,
+              "max_usage": 51.0,
+              "min_usage": 35.3
+            },
+            {
+              "core": 26,
+              "avg_usage": 57.0,
+              "max_usage": 66.0,
+              "min_usage": 48.0
+            },
+            {
+              "core": 27,
+              "avg_usage": 56.45,
+              "max_usage": 66.0,
+              "min_usage": 46.9
+            },
+            {
+              "core": 28,
+              "avg_usage": 55.0,
+              "max_usage": 64.0,
+              "min_usage": 46.0
+            },
+            {
+              "core": 29,
+              "avg_usage": 55.5,
+              "max_usage": 62.0,
+              "min_usage": 49.0
+            },
+            {
+              "core": 30,
+              "avg_usage": 31.9,
+              "max_usage": 60.0,
+              "min_usage": 3.8
+            },
+            {
+              "core": 31,
+              "avg_usage": 56.35,
+              "max_usage": 64.7,
+              "min_usage": 48.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 55.0,
+              "max_usage": 64.0,
+              "min_usage": 46.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 54.45,
+              "max_usage": 64.0,
+              "min_usage": 44.9
+            },
+            {
+              "core": 34,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 35,
+              "avg_usage": 4.0,
+              "max_usage": 8.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 36,
+              "avg_usage": 68.0,
+              "max_usage": 72.0,
+              "min_usage": 64.0
+            },
+            {
+              "core": 37,
+              "avg_usage": 67.0,
+              "max_usage": 76.0,
+              "min_usage": 58.0
+            },
+            {
+              "core": 38,
+              "avg_usage": 28.45,
+              "max_usage": 54.9,
+              "min_usage": 2.0
+            },
+            {
+              "core": 39,
+              "avg_usage": 64.2,
+              "max_usage": 82.4,
+              "min_usage": 46.0
+            },
+            {
+              "core": 40,
+              "avg_usage": 60.65,
+              "max_usage": 67.3,
+              "min_usage": 54.0
+            },
+            {
+              "core": 41,
+              "avg_usage": 73.05,
+              "max_usage": 75.5,
+              "min_usage": 70.6
+            },
+            {
+              "core": 42,
+              "avg_usage": 75.2,
+              "max_usage": 85.7,
+              "min_usage": 64.7
+            },
+            {
+              "core": 43,
+              "avg_usage": 68.3,
+              "max_usage": 68.6,
+              "min_usage": 68.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 65.45,
+              "max_usage": 74.0,
+              "min_usage": 56.9
+            },
+            {
+              "core": 45,
+              "avg_usage": 73.8,
+              "max_usage": 84.3,
+              "min_usage": 63.3
+            },
+            {
+              "core": 46,
+              "avg_usage": 73.94999999999999,
+              "max_usage": 84.6,
+              "min_usage": 63.3
+            },
+            {
+              "core": 47,
+              "avg_usage": 75.85,
+              "max_usage": 85.7,
+              "min_usage": 66.0
+            },
+            {
+              "core": 48,
+              "avg_usage": 70.0,
+              "max_usage": 80.0,
+              "min_usage": 60.0
+            },
+            {
+              "core": 49,
+              "avg_usage": 69.0,
+              "max_usage": 72.0,
+              "min_usage": 66.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 75.9,
+              "max_usage": 87.8,
+              "min_usage": 64.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 53.65,
+              "max_usage": 72.0,
+              "min_usage": 35.3
+            },
+            {
+              "core": 52,
+              "avg_usage": 74.65,
+              "max_usage": 82.0,
+              "min_usage": 67.3
+            },
+            {
+              "core": 53,
+              "avg_usage": 71.8,
+              "max_usage": 77.6,
+              "min_usage": 66.0
+            },
+            {
+              "core": 54,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 55,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 56,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 58,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 59,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 60,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 61,
+              "avg_usage": 13.25,
+              "max_usage": 26.5,
+              "min_usage": 0.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 64,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 65,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 66,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 67,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 69,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 70,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 71,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            }
+          ],
+          "sample_count": 2
+        },
+        {
+          "duration_seconds": 0.5059690475463867,
+          "total_avg_usage": 43.28958333333334,
+          "total_max_usage": 47.19444444444446,
+          "total_min_usage": 39.38472222222222,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 15.2,
+              "max_usage": 20.0,
+              "min_usage": 10.4
+            },
+            {
+              "core": 1,
+              "avg_usage": 14.7,
+              "max_usage": 29.4,
+              "min_usage": 0.0
+            },
+            {
+              "core": 2,
+              "avg_usage": 16.65,
+              "max_usage": 33.3,
+              "min_usage": 0.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 13.45,
+              "max_usage": 18.7,
+              "min_usage": 8.2
+            },
+            {
+              "core": 4,
+              "avg_usage": 48.650000000000006,
+              "max_usage": 66.7,
+              "min_usage": 30.6
+            },
+            {
+              "core": 5,
+              "avg_usage": 40.25,
+              "max_usage": 72.5,
+              "min_usage": 8.0
+            },
+            {
+              "core": 6,
+              "avg_usage": 66.6,
+              "max_usage": 72.0,
+              "min_usage": 61.2
+            },
+            {
+              "core": 7,
+              "avg_usage": 70.0,
+              "max_usage": 78.0,
+              "min_usage": 62.0
+            },
+            {
+              "core": 8,
+              "avg_usage": 69.3,
+              "max_usage": 70.6,
+              "min_usage": 68.0
+            },
+            {
+              "core": 9,
+              "avg_usage": 64.7,
+              "max_usage": 80.4,
+              "min_usage": 49.0
+            },
+            {
+              "core": 10,
+              "avg_usage": 61.0,
+              "max_usage": 80.0,
+              "min_usage": 42.0
+            },
+            {
+              "core": 11,
+              "avg_usage": 69.35,
+              "max_usage": 72.0,
+              "min_usage": 66.7
+            },
+            {
+              "core": 12,
+              "avg_usage": 68.25,
+              "max_usage": 81.6,
+              "min_usage": 54.9
+            },
+            {
+              "core": 13,
+              "avg_usage": 69.3,
+              "max_usage": 70.6,
+              "min_usage": 68.0
+            },
+            {
+              "core": 14,
+              "avg_usage": 69.0,
+              "max_usage": 69.4,
+              "min_usage": 68.6
+            },
+            {
+              "core": 15,
+              "avg_usage": 67.25,
+              "max_usage": 76.5,
+              "min_usage": 58.0
+            },
+            {
+              "core": 16,
+              "avg_usage": 6.1,
+              "max_usage": 10.2,
+              "min_usage": 2.0
+            },
+            {
+              "core": 17,
+              "avg_usage": 68.35,
+              "max_usage": 71.4,
+              "min_usage": 65.3
+            },
+            {
+              "core": 18,
+              "avg_usage": 51.45,
+              "max_usage": 60.0,
+              "min_usage": 42.9
+            },
+            {
+              "core": 19,
+              "avg_usage": 64.1,
+              "max_usage": 69.4,
+              "min_usage": 58.8
+            },
+            {
+              "core": 20,
+              "avg_usage": 52.95,
+              "max_usage": 54.9,
+              "min_usage": 51.0
+            },
+            {
+              "core": 21,
+              "avg_usage": 49.0,
+              "max_usage": 60.0,
+              "min_usage": 38.0
+            },
+            {
+              "core": 22,
+              "avg_usage": 56.849999999999994,
+              "max_usage": 58.8,
+              "min_usage": 54.9
+            },
+            {
+              "core": 23,
+              "avg_usage": 50.6,
+              "max_usage": 59.2,
+              "min_usage": 42.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 52.0,
+              "max_usage": 58.0,
+              "min_usage": 46.0
+            },
+            {
+              "core": 25,
+              "avg_usage": 53.95,
+              "max_usage": 56.9,
+              "min_usage": 51.0
+            },
+            {
+              "core": 26,
+              "avg_usage": 52.4,
+              "max_usage": 58.8,
+              "min_usage": 46.0
+            },
+            {
+              "core": 27,
+              "avg_usage": 53.5,
+              "max_usage": 56.0,
+              "min_usage": 51.0
+            },
+            {
+              "core": 28,
+              "avg_usage": 54.55,
+              "max_usage": 56.0,
+              "min_usage": 53.1
+            },
+            {
+              "core": 29,
+              "avg_usage": 53.0,
+              "max_usage": 56.0,
+              "min_usage": 50.0
+            },
+            {
+              "core": 30,
+              "avg_usage": 58.099999999999994,
+              "max_usage": 63.3,
+              "min_usage": 52.9
+            },
+            {
+              "core": 31,
+              "avg_usage": 52.55,
+              "max_usage": 53.1,
+              "min_usage": 52.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 65.85,
+              "max_usage": 85.7,
+              "min_usage": 46.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 38.35,
+              "max_usage": 44.0,
+              "min_usage": 32.7
+            },
+            {
+              "core": 34,
+              "avg_usage": 50.95,
+              "max_usage": 52.9,
+              "min_usage": 49.0
+            },
+            {
+              "core": 35,
+              "avg_usage": 57.6,
+              "max_usage": 59.2,
+              "min_usage": 56.0
+            },
+            {
+              "core": 36,
+              "avg_usage": 36.7,
+              "max_usage": 71.4,
+              "min_usage": 2.0
+            },
+            {
+              "core": 37,
+              "avg_usage": 51.3,
+              "max_usage": 72.0,
+              "min_usage": 30.6
+            },
+            {
+              "core": 38,
+              "avg_usage": 52.95,
+              "max_usage": 76.5,
+              "min_usage": 29.4
+            },
+            {
+              "core": 39,
+              "avg_usage": 56.0,
+              "max_usage": 88.0,
+              "min_usage": 24.0
+            },
+            {
+              "core": 40,
+              "avg_usage": 61.0,
+              "max_usage": 70.0,
+              "min_usage": 52.0
+            },
+            {
+              "core": 41,
+              "avg_usage": 55.3,
+              "max_usage": 80.0,
+              "min_usage": 30.6
+            },
+            {
+              "core": 42,
+              "avg_usage": 67.0,
+              "max_usage": 76.0,
+              "min_usage": 58.0
+            },
+            {
+              "core": 43,
+              "avg_usage": 69.0,
+              "max_usage": 74.0,
+              "min_usage": 64.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 70.0,
+              "max_usage": 72.0,
+              "min_usage": 68.0
+            },
+            {
+              "core": 45,
+              "avg_usage": 66.0,
+              "max_usage": 76.0,
+              "min_usage": 56.0
+            },
+            {
+              "core": 46,
+              "avg_usage": 63.0,
+              "max_usage": 66.0,
+              "min_usage": 60.0
+            },
+            {
+              "core": 47,
+              "avg_usage": 66.0,
+              "max_usage": 70.0,
+              "min_usage": 62.0
+            },
+            {
+              "core": 48,
+              "avg_usage": 64.65,
+              "max_usage": 66.0,
+              "min_usage": 63.3
+            },
+            {
+              "core": 49,
+              "avg_usage": 68.3,
+              "max_usage": 70.6,
+              "min_usage": 66.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 67.0,
+              "max_usage": 76.0,
+              "min_usage": 58.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 66.0,
+              "max_usage": 74.0,
+              "min_usage": 58.0
+            },
+            {
+              "core": 52,
+              "avg_usage": 53.65,
+              "max_usage": 63.3,
+              "min_usage": 44.0
+            },
+            {
+              "core": 53,
+              "avg_usage": 67.05000000000001,
+              "max_usage": 71.4,
+              "min_usage": 62.7
+            },
+            {
+              "core": 54,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 55,
+              "avg_usage": 36.0,
+              "max_usage": 72.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 56,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 58,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 59,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 60,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 61,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 64,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 65,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 66,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 67,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 67.15,
+              "max_usage": 84.3,
+              "min_usage": 50.0
+            },
+            {
+              "core": 69,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 70,
+              "avg_usage": 25.5,
+              "max_usage": 51.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 71,
+              "avg_usage": 21.45,
+              "max_usage": 42.9,
+              "min_usage": 0.0
+            }
+          ],
+          "sample_count": 2
+        },
+        {
+          "duration_seconds": 1.0097002983093262,
+          "total_avg_usage": 30.881018518518516,
+          "total_max_usage": 65.45138888888889,
+          "total_min_usage": 2.3722222222222222,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 39.4,
+              "max_usage": 84.0,
+              "min_usage": 11.8
+            },
+            {
+              "core": 1,
+              "avg_usage": 20.4,
+              "max_usage": 38.8,
+              "min_usage": 0.0
+            },
+            {
+              "core": 2,
+              "avg_usage": 46.43333333333334,
+              "max_usage": 100.0,
+              "min_usage": 6.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 32.300000000000004,
+              "max_usage": 76.9,
+              "min_usage": 0.0
+            },
+            {
+              "core": 4,
+              "avg_usage": 62.73333333333334,
+              "max_usage": 100.0,
+              "min_usage": 3.9
+            },
+            {
+              "core": 5,
+              "avg_usage": 55.0,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 6,
+              "avg_usage": 44.43333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 7,
+              "avg_usage": 44.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 8,
+              "avg_usage": 43.73333333333333,
+              "max_usage": 84.3,
+              "min_usage": 0.0
+            },
+            {
+              "core": 9,
+              "avg_usage": 46.666666666666664,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 10,
+              "avg_usage": 44.333333333333336,
+              "max_usage": 92.2,
+              "min_usage": 0.0
+            },
+            {
+              "core": 11,
+              "avg_usage": 44.43333333333334,
+              "max_usage": 90.2,
+              "min_usage": 0.0
+            },
+            {
+              "core": 12,
+              "avg_usage": 45.56666666666666,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 13,
+              "avg_usage": 45.93333333333334,
+              "max_usage": 100.0,
+              "min_usage": 9.8
+            },
+            {
+              "core": 14,
+              "avg_usage": 10.200000000000001,
+              "max_usage": 28.6,
+              "min_usage": 0.0
+            },
+            {
+              "core": 15,
+              "avg_usage": 43.666666666666664,
+              "max_usage": 90.2,
+              "min_usage": 0.0
+            },
+            {
+              "core": 16,
+              "avg_usage": 49.333333333333336,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 17,
+              "avg_usage": 47.333333333333336,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 18,
+              "avg_usage": 38.666666666666664,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 19,
+              "avg_usage": 34.666666666666664,
+              "max_usage": 88.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 20,
+              "avg_usage": 17.333333333333332,
+              "max_usage": 36.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 21,
+              "avg_usage": 36.666666666666664,
+              "max_usage": 92.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 22,
+              "avg_usage": 37.4,
+              "max_usage": 92.2,
+              "min_usage": 0.0
+            },
+            {
+              "core": 23,
+              "avg_usage": 17.333333333333332,
+              "max_usage": 36.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 37.4,
+              "max_usage": 95.9,
+              "min_usage": 0.0
+            },
+            {
+              "core": 25,
+              "avg_usage": 37.233333333333334,
+              "max_usage": 92.0,
+              "min_usage": 4.0
+            },
+            {
+              "core": 26,
+              "avg_usage": 39.93333333333333,
+              "max_usage": 100.0,
+              "min_usage": 3.8
+            },
+            {
+              "core": 27,
+              "avg_usage": 37.86666666666667,
+              "max_usage": 94.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 28,
+              "avg_usage": 36.0,
+              "max_usage": 90.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 29,
+              "avg_usage": 36.766666666666666,
+              "max_usage": 94.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 30,
+              "avg_usage": 36.86666666666667,
+              "max_usage": 92.2,
+              "min_usage": 0.0
+            },
+            {
+              "core": 31,
+              "avg_usage": 37.46666666666666,
+              "max_usage": 96.1,
+              "min_usage": 0.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 42.6,
+              "max_usage": 81.6,
+              "min_usage": 0.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 22.0,
+              "max_usage": 64.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 34,
+              "avg_usage": 4.0,
+              "max_usage": 8.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 35,
+              "avg_usage": 24.666666666666668,
+              "max_usage": 64.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 36,
+              "avg_usage": 36.0,
+              "max_usage": 82.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 37,
+              "avg_usage": 56.166666666666664,
+              "max_usage": 92.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 38,
+              "avg_usage": 49.76666666666667,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 39,
+              "avg_usage": 36.666666666666664,
+              "max_usage": 90.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 40,
+              "avg_usage": 44.666666666666664,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 41,
+              "avg_usage": 53.666666666666664,
+              "max_usage": 100.0,
+              "min_usage": 10.0
+            },
+            {
+              "core": 42,
+              "avg_usage": 45.333333333333336,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 43,
+              "avg_usage": 42.96666666666667,
+              "max_usage": 86.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 23.400000000000002,
+              "max_usage": 60.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 45,
+              "avg_usage": 45.73333333333333,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 46,
+              "avg_usage": 53.96666666666667,
+              "max_usage": 100.0,
+              "min_usage": 5.9
+            },
+            {
+              "core": 47,
+              "avg_usage": 44.666666666666664,
+              "max_usage": 96.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 48,
+              "avg_usage": 46.800000000000004,
+              "max_usage": 100.0,
+              "min_usage": 11.8
+            },
+            {
+              "core": 49,
+              "avg_usage": 52.76666666666667,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 36.0,
+              "max_usage": 64.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 45.53333333333333,
+              "max_usage": 100.0,
+              "min_usage": 6.0
+            },
+            {
+              "core": 52,
+              "avg_usage": 47.6,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 53,
+              "avg_usage": 50.166666666666664,
+              "max_usage": 100.0,
+              "min_usage": 12.0
+            },
+            {
+              "core": 54,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 55,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 56,
+              "avg_usage": 26.133333333333336,
+              "max_usage": 78.4,
+              "min_usage": 0.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 58,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 59,
+              "avg_usage": 40.0,
+              "max_usage": 100.0,
+              "min_usage": 7.8
+            },
+            {
+              "core": 60,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 61,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 64,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 65,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 66,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 67,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 4.0,
+              "max_usage": 10.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 69,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 70,
+              "avg_usage": 0.6666666666666666,
+              "max_usage": 2.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 71,
+              "avg_usage": 0.0,
+              "max_usage": 0.0,
+              "min_usage": 0.0
+            }
+          ],
+          "sample_count": 3
+        }
+      ],
+      "avg_time": 1.0046522362778585,
+      "std_time": 0.06758015628159915,
+      "avg_accuracy": 0.9653,
+      "std_accuracy": 0.0005099019513592731,
+      "avg_cpu_usage": 39.83256172839506
+    },
+    "100": {
+      "times": [
+        1.5917527256533504,
+        1.5980931920930743,
+        1.6301745707169175
+      ],
+      "accuracies": [
+        0.968,
+        0.9668,
+        0.9685
+      ],
+      "cpu_monitor_data": [
+        {
+          "duration_seconds": 1.5114870071411133,
+          "total_avg_usage": 51.253125,
+          "total_max_usage": 99.28611111111111,
+          "total_min_usage": 1.6708333333333334,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 65.175,
+              "max_usage": 98.0,
+              "min_usage": 12.2
+            },
+            {
+              "core": 1,
+              "avg_usage": 39.725,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 2,
+              "avg_usage": 42.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 65.1,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 4,
+              "avg_usage": 61.175,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 5,
+              "avg_usage": 68.675,
+              "max_usage": 100.0,
+              "min_usage": 10.0
+            },
+            {
+              "core": 6,
+              "avg_usage": 65.025,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 7,
+              "avg_usage": 67.025,
+              "max_usage": 100.0,
+              "min_usage": 8.0
+            },
+            {
+              "core": 8,
+              "avg_usage": 38.5,
+              "max_usage": 100.0,
+              "min_usage": 4.0
+            },
+            {
+              "core": 9,
+              "avg_usage": 67.5,
+              "max_usage": 100.0,
+              "min_usage": 12.0
+            },
+            {
+              "core": 10,
+              "avg_usage": 69.85,
+              "max_usage": 100.0,
+              "min_usage": 10.0
+            },
+            {
+              "core": 11,
+              "avg_usage": 67.5,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 12,
+              "avg_usage": 69.325,
+              "max_usage": 100.0,
+              "min_usage": 12.0
+            },
+            {
+              "core": 13,
+              "avg_usage": 68.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 14,
+              "avg_usage": 65.2,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 15,
+              "avg_usage": 41.8,
+              "max_usage": 100.0,
+              "min_usage": 4.0
+            },
+            {
+              "core": 16,
+              "avg_usage": 59.3,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 17,
+              "avg_usage": 68.125,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 18,
+              "avg_usage": 46.074999999999996,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 19,
+              "avg_usage": 41.9,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 20,
+              "avg_usage": 45.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 21,
+              "avg_usage": 41.4,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 22,
+              "avg_usage": 40.199999999999996,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 23,
+              "avg_usage": 45.125,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 38.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 25,
+              "avg_usage": 40.425,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 26,
+              "avg_usage": 40.9,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 27,
+              "avg_usage": 42.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 28,
+              "avg_usage": 45.449999999999996,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 29,
+              "avg_usage": 43.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 30,
+              "avg_usage": 43.825,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 31,
+              "avg_usage": 44.675,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 43.1,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 43.325,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 34,
+              "avg_usage": 42.35,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 35,
+              "avg_usage": 43.3,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 36,
+              "avg_usage": 38.4,
+              "max_usage": 92.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 37,
+              "avg_usage": 60.1,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 38,
+              "avg_usage": 56.2,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 39,
+              "avg_usage": 61.625,
+              "max_usage": 100.0,
+              "min_usage": 6.1
+            },
+            {
+              "core": 40,
+              "avg_usage": 39.65,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 41,
+              "avg_usage": 67.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 42,
+              "avg_usage": 66.525,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 43,
+              "avg_usage": 67.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 60.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 45,
+              "avg_usage": 66.875,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 46,
+              "avg_usage": 69.85,
+              "max_usage": 100.0,
+              "min_usage": 10.0
+            },
+            {
+              "core": 47,
+              "avg_usage": 68.025,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 48,
+              "avg_usage": 68.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 49,
+              "avg_usage": 68.7,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 49.2,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 64.175,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 52,
+              "avg_usage": 41.675,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 53,
+              "avg_usage": 68.5,
+              "max_usage": 100.0,
+              "min_usage": 10.0
+            },
+            {
+              "core": 54,
+              "avg_usage": 43.3,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 55,
+              "avg_usage": 40.15,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 56,
+              "avg_usage": 39.225,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 40.175,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 58,
+              "avg_usage": 40.825,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 59,
+              "avg_usage": 43.8,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 60,
+              "avg_usage": 39.35,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 61,
+              "avg_usage": 40.2,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 41.425,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 41.3,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 64,
+              "avg_usage": 44.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 65,
+              "avg_usage": 42.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 66,
+              "avg_usage": 42.8,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 67,
+              "avg_usage": 41.85,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 37.425,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 69,
+              "avg_usage": 43.025000000000006,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 70,
+              "avg_usage": 41.95,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 71,
+              "avg_usage": 43.875,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            }
+          ],
+          "sample_count": 4
+        },
+        {
+          "duration_seconds": 1.5187797546386719,
+          "total_avg_usage": 51.23993055555556,
+          "total_max_usage": 99.53194444444445,
+          "total_min_usage": 2.0347222222222223,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 44.125,
+              "max_usage": 100.0,
+              "min_usage": 5.9
+            },
+            {
+              "core": 1,
+              "avg_usage": 69.125,
+              "max_usage": 100.0,
+              "min_usage": 11.8
+            },
+            {
+              "core": 2,
+              "avg_usage": 64.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 69.925,
+              "max_usage": 100.0,
+              "min_usage": 13.7
+            },
+            {
+              "core": 4,
+              "avg_usage": 67.425,
+              "max_usage": 100.0,
+              "min_usage": 15.7
+            },
+            {
+              "core": 5,
+              "avg_usage": 66.375,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 6,
+              "avg_usage": 66.5,
+              "max_usage": 100.0,
+              "min_usage": 10.0
+            },
+            {
+              "core": 7,
+              "avg_usage": 60.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 8,
+              "avg_usage": 66.0,
+              "max_usage": 100.0,
+              "min_usage": 12.0
+            },
+            {
+              "core": 9,
+              "avg_usage": 60.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 10,
+              "avg_usage": 67.0,
+              "max_usage": 100.0,
+              "min_usage": 6.0
+            },
+            {
+              "core": 11,
+              "avg_usage": 68.475,
+              "max_usage": 100.0,
+              "min_usage": 3.9
+            },
+            {
+              "core": 12,
+              "avg_usage": 37.05,
+              "max_usage": 90.2,
+              "min_usage": 0.0
+            },
+            {
+              "core": 13,
+              "avg_usage": 60.525,
+              "max_usage": 98.1,
+              "min_usage": 0.0
+            },
+            {
+              "core": 14,
+              "avg_usage": 36.675,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 15,
+              "avg_usage": 39.45,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 16,
+              "avg_usage": 67.15,
+              "max_usage": 100.0,
+              "min_usage": 13.7
+            },
+            {
+              "core": 17,
+              "avg_usage": 59.1,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 18,
+              "avg_usage": 44.175,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 19,
+              "avg_usage": 44.725,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 20,
+              "avg_usage": 43.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 21,
+              "avg_usage": 40.9,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 22,
+              "avg_usage": 44.225,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 23,
+              "avg_usage": 39.85,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 44.85,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 25,
+              "avg_usage": 46.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 26,
+              "avg_usage": 45.175,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 27,
+              "avg_usage": 45.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 28,
+              "avg_usage": 39.675,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 29,
+              "avg_usage": 39.699999999999996,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 30,
+              "avg_usage": 45.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 31,
+              "avg_usage": 40.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 43.3,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 43.825,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 34,
+              "avg_usage": 42.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 35,
+              "avg_usage": 44.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 36,
+              "avg_usage": 61.125,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 37,
+              "avg_usage": 67.025,
+              "max_usage": 100.0,
+              "min_usage": 4.1
+            },
+            {
+              "core": 38,
+              "avg_usage": 65.55,
+              "max_usage": 100.0,
+              "min_usage": 8.2
+            },
+            {
+              "core": 39,
+              "avg_usage": 69.3,
+              "max_usage": 100.0,
+              "min_usage": 7.8
+            },
+            {
+              "core": 40,
+              "avg_usage": 67.475,
+              "max_usage": 100.0,
+              "min_usage": 3.9
+            },
+            {
+              "core": 41,
+              "avg_usage": 68.175,
+              "max_usage": 100.0,
+              "min_usage": 12.0
+            },
+            {
+              "core": 42,
+              "avg_usage": 68.95,
+              "max_usage": 100.0,
+              "min_usage": 11.8
+            },
+            {
+              "core": 43,
+              "avg_usage": 39.275,
+              "max_usage": 98.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 67.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 45,
+              "avg_usage": 36.725,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 46,
+              "avg_usage": 67.625,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 47,
+              "avg_usage": 68.35,
+              "max_usage": 100.0,
+              "min_usage": 4.0
+            },
+            {
+              "core": 48,
+              "avg_usage": 60.875,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 49,
+              "avg_usage": 41.85,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 61.475,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 60.275,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 52,
+              "avg_usage": 71.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 53,
+              "avg_usage": 38.5,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 54,
+              "avg_usage": 43.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 55,
+              "avg_usage": 45.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 56,
+              "avg_usage": 44.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 41.975,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 58,
+              "avg_usage": 42.9,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 59,
+              "avg_usage": 41.725,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 60,
+              "avg_usage": 44.125,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 61,
+              "avg_usage": 44.625,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 42.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 43.65,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 64,
+              "avg_usage": 41.825,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 65,
+              "avg_usage": 31.1,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 66,
+              "avg_usage": 44.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 67,
+              "avg_usage": 40.625,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 43.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 69,
+              "avg_usage": 42.25,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 70,
+              "avg_usage": 41.85,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 71,
+              "avg_usage": 43.275,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            }
+          ],
+          "sample_count": 4
+        },
+        {
+          "duration_seconds": 1.5172653198242188,
+          "total_avg_usage": 51.90312499999999,
+          "total_max_usage": 99.25416666666666,
+          "total_min_usage": 3.1375,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 47.574999999999996,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 1,
+              "avg_usage": 61.85,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 2,
+              "avg_usage": 59.224999999999994,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 50.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 4,
+              "avg_usage": 67.625,
+              "max_usage": 100.0,
+              "min_usage": 7.8
+            },
+            {
+              "core": 5,
+              "avg_usage": 67.55,
+              "max_usage": 100.0,
+              "min_usage": 8.2
+            },
+            {
+              "core": 6,
+              "avg_usage": 69.2,
+              "max_usage": 100.0,
+              "min_usage": 16.0
+            },
+            {
+              "core": 7,
+              "avg_usage": 39.800000000000004,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 8,
+              "avg_usage": 67.62499999999999,
+              "max_usage": 100.0,
+              "min_usage": 13.7
+            },
+            {
+              "core": 9,
+              "avg_usage": 66.325,
+              "max_usage": 98.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 10,
+              "avg_usage": 57.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 11,
+              "avg_usage": 65.375,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 12,
+              "avg_usage": 69.675,
+              "max_usage": 100.0,
+              "min_usage": 18.4
+            },
+            {
+              "core": 13,
+              "avg_usage": 60.45,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 14,
+              "avg_usage": 68.0,
+              "max_usage": 100.0,
+              "min_usage": 4.0
+            },
+            {
+              "core": 15,
+              "avg_usage": 68.15,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 16,
+              "avg_usage": 48.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 17,
+              "avg_usage": 69.8,
+              "max_usage": 100.0,
+              "min_usage": 22.0
+            },
+            {
+              "core": 18,
+              "avg_usage": 40.575,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 19,
+              "avg_usage": 50.775,
+              "max_usage": 94.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 20,
+              "avg_usage": 44.75,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 21,
+              "avg_usage": 40.725,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 22,
+              "avg_usage": 45.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 23,
+              "avg_usage": 41.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 37.725,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 25,
+              "avg_usage": 42.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 26,
+              "avg_usage": 41.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 27,
+              "avg_usage": 45.3,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 28,
+              "avg_usage": 45.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 29,
+              "avg_usage": 43.825,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 30,
+              "avg_usage": 44.225,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 31,
+              "avg_usage": 46.275,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 46.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 43.825,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 34,
+              "avg_usage": 42.15,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 35,
+              "avg_usage": 45.1,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 36,
+              "avg_usage": 63.5,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 37,
+              "avg_usage": 44.5,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 38,
+              "avg_usage": 39.85,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 39,
+              "avg_usage": 62.5,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 40,
+              "avg_usage": 67.125,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 41,
+              "avg_usage": 68.5,
+              "max_usage": 100.0,
+              "min_usage": 16.0
+            },
+            {
+              "core": 42,
+              "avg_usage": 68.0,
+              "max_usage": 100.0,
+              "min_usage": 18.0
+            },
+            {
+              "core": 43,
+              "avg_usage": 60.575,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 37.75,
+              "max_usage": 90.2,
+              "min_usage": 2.0
+            },
+            {
+              "core": 45,
+              "avg_usage": 68.0,
+              "max_usage": 100.0,
+              "min_usage": 18.0
+            },
+            {
+              "core": 46,
+              "avg_usage": 41.25,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 47,
+              "avg_usage": 67.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 48,
+              "avg_usage": 67.675,
+              "max_usage": 100.0,
+              "min_usage": 8.0
+            },
+            {
+              "core": 49,
+              "avg_usage": 39.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 67.8,
+              "max_usage": 100.0,
+              "min_usage": 18.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 66.5,
+              "max_usage": 100.0,
+              "min_usage": 4.0
+            },
+            {
+              "core": 52,
+              "avg_usage": 62.4,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 53,
+              "avg_usage": 68.825,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 54,
+              "avg_usage": 32.05,
+              "max_usage": 92.2,
+              "min_usage": 0.0
+            },
+            {
+              "core": 55,
+              "avg_usage": 51.3,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 56,
+              "avg_usage": 43.125,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 42.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 58,
+              "avg_usage": 43.15,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 59,
+              "avg_usage": 41.8,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 60,
+              "avg_usage": 40.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 61,
+              "avg_usage": 53.975,
+              "max_usage": 95.9,
+              "min_usage": 0.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 40.175,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 44.65,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 64,
+              "avg_usage": 44.3,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 65,
+              "avg_usage": 41.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 66,
+              "avg_usage": 44.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 67,
+              "avg_usage": 45.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 47.45,
+              "max_usage": 100.0,
+              "min_usage": 11.8
+            },
+            {
+              "core": 69,
+              "avg_usage": 42.825,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 70,
+              "avg_usage": 42.675,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 71,
+              "avg_usage": 45.825,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            }
+          ],
+          "sample_count": 4
+        }
+      ],
+      "avg_time": 1.6066734961544473,
+      "std_time": 0.01681815998380722,
+      "avg_accuracy": 0.9677666666666668,
+      "std_accuracy": 0.0007133644853010995,
+      "avg_cpu_usage": 51.46539351851851
+    },
+    "200": {
+      "times": [
+        2.831610498018563,
+        2.834085547365248,
+        2.8217918975278735
+      ],
+      "accuracies": [
+        0.969,
+        0.9703,
+        0.9693
+      ],
+      "cpu_monitor_data": [
+        {
+          "duration_seconds": 2.522463321685791,
+          "total_avg_usage": 70.57777777777778,
+          "total_max_usage": 99.36250000000001,
+          "total_min_usage": 8.644444444444444,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 68.31666666666668,
+              "max_usage": 100.0,
+              "min_usage": 2.1
+            },
+            {
+              "core": 1,
+              "avg_usage": 74.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 2,
+              "avg_usage": 71.73333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 71.3,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 4,
+              "avg_usage": 72.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 5,
+              "avg_usage": 74.48333333333333,
+              "max_usage": 100.0,
+              "min_usage": 6.0
+            },
+            {
+              "core": 6,
+              "avg_usage": 70.71666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 7,
+              "avg_usage": 70.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 8,
+              "avg_usage": 71.66666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 9,
+              "avg_usage": 70.66666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 10,
+              "avg_usage": 59.86666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 11,
+              "avg_usage": 72.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 12,
+              "avg_usage": 71.75,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 13,
+              "avg_usage": 71.21666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 14,
+              "avg_usage": 72.46666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 15,
+              "avg_usage": 71.96666666666667,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 16,
+              "avg_usage": 71.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 17,
+              "avg_usage": 73.83333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 18,
+              "avg_usage": 76.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 28.6
+            },
+            {
+              "core": 19,
+              "avg_usage": 74.91666666666667,
+              "max_usage": 100.0,
+              "min_usage": 6.1
+            },
+            {
+              "core": 20,
+              "avg_usage": 76.66666666666667,
+              "max_usage": 100.0,
+              "min_usage": 20.0
+            },
+            {
+              "core": 21,
+              "avg_usage": 74.21666666666667,
+              "max_usage": 100.0,
+              "min_usage": 4.1
+            },
+            {
+              "core": 22,
+              "avg_usage": 74.39999999999999,
+              "max_usage": 100.0,
+              "min_usage": 18.4
+            },
+            {
+              "core": 23,
+              "avg_usage": 74.88333333333334,
+              "max_usage": 100.0,
+              "min_usage": 12.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 66.55,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 25,
+              "avg_usage": 76.38333333333334,
+              "max_usage": 100.0,
+              "min_usage": 16.3
+            },
+            {
+              "core": 26,
+              "avg_usage": 74.36666666666667,
+              "max_usage": 100.0,
+              "min_usage": 17.6
+            },
+            {
+              "core": 27,
+              "avg_usage": 75.56666666666666,
+              "max_usage": 100.0,
+              "min_usage": 15.7
+            },
+            {
+              "core": 28,
+              "avg_usage": 82.31666666666668,
+              "max_usage": 100.0,
+              "min_usage": 40.8
+            },
+            {
+              "core": 29,
+              "avg_usage": 76.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 26.0
+            },
+            {
+              "core": 30,
+              "avg_usage": 67.98333333333333,
+              "max_usage": 100.0,
+              "min_usage": 28.0
+            },
+            {
+              "core": 31,
+              "avg_usage": 65.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 69.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 73.60000000000001,
+              "max_usage": 100.0,
+              "min_usage": 20.0
+            },
+            {
+              "core": 34,
+              "avg_usage": 74.2,
+              "max_usage": 100.0,
+              "min_usage": 26.0
+            },
+            {
+              "core": 35,
+              "avg_usage": 69.35000000000001,
+              "max_usage": 100.0,
+              "min_usage": 23.5
+            },
+            {
+              "core": 36,
+              "avg_usage": 71.73333333333333,
+              "max_usage": 100.0,
+              "min_usage": 7.8
+            },
+            {
+              "core": 37,
+              "avg_usage": 73.64999999999999,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 38,
+              "avg_usage": 72.64999999999999,
+              "max_usage": 100.0,
+              "min_usage": 3.9
+            },
+            {
+              "core": 39,
+              "avg_usage": 76.03333333333333,
+              "max_usage": 100.0,
+              "min_usage": 8.2
+            },
+            {
+              "core": 40,
+              "avg_usage": 71.98333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 41,
+              "avg_usage": 71.85,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 42,
+              "avg_usage": 70.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 43,
+              "avg_usage": 70.63333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 71.78333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 45,
+              "avg_usage": 70.81666666666666,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 46,
+              "avg_usage": 84.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 24.0
+            },
+            {
+              "core": 47,
+              "avg_usage": 72.95,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 48,
+              "avg_usage": 72.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 49,
+              "avg_usage": 72.86666666666666,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 72.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 69.83333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 52,
+              "avg_usage": 70.58333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 53,
+              "avg_usage": 74.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 54,
+              "avg_usage": 60.28333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 55,
+              "avg_usage": 58.65,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 56,
+              "avg_usage": 59.26666666666666,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 58.35,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 58,
+              "avg_usage": 58.666666666666664,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 59,
+              "avg_usage": 59.550000000000004,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 60,
+              "avg_usage": 69.36666666666666,
+              "max_usage": 100.0,
+              "min_usage": 10.2
+            },
+            {
+              "core": 61,
+              "avg_usage": 80.31666666666666,
+              "max_usage": 100.0,
+              "min_usage": 20.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 65.68333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 59.26666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 64,
+              "avg_usage": 79.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 18.0
+            },
+            {
+              "core": 65,
+              "avg_usage": 59.85,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 66,
+              "avg_usage": 59.71666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 67,
+              "avg_usage": 64.10000000000001,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 77.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 22.0
+            },
+            {
+              "core": 69,
+              "avg_usage": 60.21666666666667,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 70,
+              "avg_usage": 78.83333333333333,
+              "max_usage": 100.0,
+              "min_usage": 20.0
+            },
+            {
+              "core": 71,
+              "avg_usage": 59.56666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            }
+          ],
+          "sample_count": 6
+        },
+        {
+          "duration_seconds": 2.5320403575897217,
+          "total_avg_usage": 70.49374999999999,
+          "total_max_usage": 99.42083333333335,
+          "total_min_usage": 10.122222222222224,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 68.64999999999999,
+              "max_usage": 100.0,
+              "min_usage": 6.0
+            },
+            {
+              "core": 1,
+              "avg_usage": 68.89999999999999,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 2,
+              "avg_usage": 70.8,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 68.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 4,
+              "avg_usage": 70.98333333333333,
+              "max_usage": 100.0,
+              "min_usage": 1.9
+            },
+            {
+              "core": 5,
+              "avg_usage": 69.23333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 6,
+              "avg_usage": 71.48333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 7,
+              "avg_usage": 71.01666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 8,
+              "avg_usage": 72.48333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 9,
+              "avg_usage": 72.91666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 10,
+              "avg_usage": 70.66666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 11,
+              "avg_usage": 69.18333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 12,
+              "avg_usage": 73.05,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 13,
+              "avg_usage": 72.35000000000001,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 14,
+              "avg_usage": 70.58333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 15,
+              "avg_usage": 69.76666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 16,
+              "avg_usage": 69.28333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 17,
+              "avg_usage": 71.56666666666668,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 18,
+              "avg_usage": 68.91666666666667,
+              "max_usage": 100.0,
+              "min_usage": 23.5
+            },
+            {
+              "core": 19,
+              "avg_usage": 72.26666666666667,
+              "max_usage": 100.0,
+              "min_usage": 22.0
+            },
+            {
+              "core": 20,
+              "avg_usage": 60.86666666666667,
+              "max_usage": 100.0,
+              "min_usage": 13.7
+            },
+            {
+              "core": 21,
+              "avg_usage": 70.23333333333333,
+              "max_usage": 100.0,
+              "min_usage": 26.0
+            },
+            {
+              "core": 22,
+              "avg_usage": 59.23333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 23,
+              "avg_usage": 59.73333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 61.68333333333334,
+              "max_usage": 100.0,
+              "min_usage": 24.0
+            },
+            {
+              "core": 25,
+              "avg_usage": 58.25,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 26,
+              "avg_usage": 63.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 27,
+              "avg_usage": 64.71666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 28,
+              "avg_usage": 73.66666666666667,
+              "max_usage": 100.0,
+              "min_usage": 16.0
+            },
+            {
+              "core": 29,
+              "avg_usage": 80.46666666666667,
+              "max_usage": 100.0,
+              "min_usage": 30.8
+            },
+            {
+              "core": 30,
+              "avg_usage": 60.56666666666666,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 31,
+              "avg_usage": 61.333333333333336,
+              "max_usage": 100.0,
+              "min_usage": 4.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 78.51666666666667,
+              "max_usage": 100.0,
+              "min_usage": 28.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 78.31666666666668,
+              "max_usage": 100.0,
+              "min_usage": 28.8
+            },
+            {
+              "core": 34,
+              "avg_usage": 61.36666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 35,
+              "avg_usage": 77.83333333333333,
+              "max_usage": 100.0,
+              "min_usage": 20.0
+            },
+            {
+              "core": 36,
+              "avg_usage": 70.58333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 37,
+              "avg_usage": 70.48333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 38,
+              "avg_usage": 71.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 39,
+              "avg_usage": 68.38333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 40,
+              "avg_usage": 71.88333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 41,
+              "avg_usage": 70.35000000000001,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 42,
+              "avg_usage": 70.56666666666666,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 43,
+              "avg_usage": 71.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 74.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 45,
+              "avg_usage": 71.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 46,
+              "avg_usage": 69.76666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 47,
+              "avg_usage": 72.21666666666667,
+              "max_usage": 100.0,
+              "min_usage": 3.8
+            },
+            {
+              "core": 48,
+              "avg_usage": 73.2,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 49,
+              "avg_usage": 73.68333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 70.66666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 69.86666666666666,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 52,
+              "avg_usage": 69.53333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 53,
+              "avg_usage": 74.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 54,
+              "avg_usage": 64.25,
+              "max_usage": 100.0,
+              "min_usage": 23.5
+            },
+            {
+              "core": 55,
+              "avg_usage": 78.55,
+              "max_usage": 100.0,
+              "min_usage": 33.3
+            },
+            {
+              "core": 56,
+              "avg_usage": 73.53333333333333,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 59.23333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 58,
+              "avg_usage": 74.18333333333332,
+              "max_usage": 100.0,
+              "min_usage": 5.9
+            },
+            {
+              "core": 59,
+              "avg_usage": 75.0,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 60,
+              "avg_usage": 77.61666666666666,
+              "max_usage": 100.0,
+              "min_usage": 24.5
+            },
+            {
+              "core": 61,
+              "avg_usage": 73.41666666666667,
+              "max_usage": 100.0,
+              "min_usage": 4.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 77.0,
+              "max_usage": 100.0,
+              "min_usage": 20.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 59.166666666666664,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 64,
+              "avg_usage": 59.9,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 65,
+              "avg_usage": 81.23333333333333,
+              "max_usage": 100.0,
+              "min_usage": 29.4
+            },
+            {
+              "core": 66,
+              "avg_usage": 75.8,
+              "max_usage": 100.0,
+              "min_usage": 23.5
+            },
+            {
+              "core": 67,
+              "avg_usage": 65.95,
+              "max_usage": 100.0,
+              "min_usage": 26.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 81.21666666666667,
+              "max_usage": 100.0,
+              "min_usage": 35.3
+            },
+            {
+              "core": 69,
+              "avg_usage": 80.4,
+              "max_usage": 100.0,
+              "min_usage": 35.3
+            },
+            {
+              "core": 70,
+              "avg_usage": 74.11666666666666,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 71,
+              "avg_usage": 79.41666666666667,
+              "max_usage": 100.0,
+              "min_usage": 27.5
+            }
+          ],
+          "sample_count": 6
+        },
+        {
+          "duration_seconds": 2.5445828437805176,
+          "total_avg_usage": 70.36134259259259,
+          "total_max_usage": 99.55972222222222,
+          "total_min_usage": 8.9875,
+          "cores_usage": [
+            {
+              "core": 0,
+              "avg_usage": 64.81666666666666,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 1,
+              "avg_usage": 69.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 2,
+              "avg_usage": 71.06666666666666,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 3,
+              "avg_usage": 74.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 4,
+              "avg_usage": 72.21666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 5,
+              "avg_usage": 72.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 6,
+              "avg_usage": 78.46666666666667,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 7,
+              "avg_usage": 71.66666666666667,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 8,
+              "avg_usage": 71.13333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 9,
+              "avg_usage": 73.96666666666667,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 10,
+              "avg_usage": 67.73333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 11,
+              "avg_usage": 70.66666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 12,
+              "avg_usage": 73.53333333333333,
+              "max_usage": 100.0,
+              "min_usage": 12.0
+            },
+            {
+              "core": 13,
+              "avg_usage": 73.51666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 14,
+              "avg_usage": 72.76666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 15,
+              "avg_usage": 74.0,
+              "max_usage": 100.0,
+              "min_usage": 2.0
+            },
+            {
+              "core": 16,
+              "avg_usage": 68.85000000000001,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 17,
+              "avg_usage": 70.68333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 18,
+              "avg_usage": 74.75,
+              "max_usage": 100.0,
+              "min_usage": 14.0
+            },
+            {
+              "core": 19,
+              "avg_usage": 76.93333333333332,
+              "max_usage": 100.0,
+              "min_usage": 33.3
+            },
+            {
+              "core": 20,
+              "avg_usage": 61.13333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 21,
+              "avg_usage": 80.13333333333334,
+              "max_usage": 100.0,
+              "min_usage": 30.8
+            },
+            {
+              "core": 22,
+              "avg_usage": 68.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 23,
+              "avg_usage": 71.66666666666667,
+              "max_usage": 100.0,
+              "min_usage": 24.0
+            },
+            {
+              "core": 24,
+              "avg_usage": 78.75,
+              "max_usage": 100.0,
+              "min_usage": 23.5
+            },
+            {
+              "core": 25,
+              "avg_usage": 59.23333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 26,
+              "avg_usage": 75.16666666666667,
+              "max_usage": 100.0,
+              "min_usage": 13.7
+            },
+            {
+              "core": 27,
+              "avg_usage": 60.01666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 28,
+              "avg_usage": 58.78333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 29,
+              "avg_usage": 57.333333333333336,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 30,
+              "avg_usage": 71.10000000000001,
+              "max_usage": 100.0,
+              "min_usage": 20.4
+            },
+            {
+              "core": 31,
+              "avg_usage": 63.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 32,
+              "avg_usage": 77.48333333333333,
+              "max_usage": 100.0,
+              "min_usage": 20.0
+            },
+            {
+              "core": 33,
+              "avg_usage": 57.53333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 34,
+              "avg_usage": 78.26666666666667,
+              "max_usage": 100.0,
+              "min_usage": 21.6
+            },
+            {
+              "core": 35,
+              "avg_usage": 64.8,
+              "max_usage": 100.0,
+              "min_usage": 6.0
+            },
+            {
+              "core": 36,
+              "avg_usage": 71.68333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 37,
+              "avg_usage": 73.05,
+              "max_usage": 98.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 38,
+              "avg_usage": 74.13333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 39,
+              "avg_usage": 74.53333333333335,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 40,
+              "avg_usage": 72.58333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 41,
+              "avg_usage": 72.51666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 42,
+              "avg_usage": 72.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 43,
+              "avg_usage": 70.53333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 44,
+              "avg_usage": 72.0,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 45,
+              "avg_usage": 69.91666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 46,
+              "avg_usage": 67.78333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 47,
+              "avg_usage": 69.71666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 48,
+              "avg_usage": 69.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 49,
+              "avg_usage": 70.8,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 50,
+              "avg_usage": 71.89999999999999,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 51,
+              "avg_usage": 69.43333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 52,
+              "avg_usage": 68.76666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 53,
+              "avg_usage": 71.48333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 54,
+              "avg_usage": 62.699999999999996,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 55,
+              "avg_usage": 75.89999999999999,
+              "max_usage": 100.0,
+              "min_usage": 26.0
+            },
+            {
+              "core": 56,
+              "avg_usage": 75.21666666666667,
+              "max_usage": 100.0,
+              "min_usage": 20.0
+            },
+            {
+              "core": 57,
+              "avg_usage": 77.89999999999999,
+              "max_usage": 100.0,
+              "min_usage": 29.4
+            },
+            {
+              "core": 58,
+              "avg_usage": 60.5,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 59,
+              "avg_usage": 59.98333333333334,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 60,
+              "avg_usage": 59.15,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 61,
+              "avg_usage": 73.0,
+              "max_usage": 100.0,
+              "min_usage": 10.0
+            },
+            {
+              "core": 62,
+              "avg_usage": 57.28333333333333,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 63,
+              "avg_usage": 70.7,
+              "max_usage": 100.0,
+              "min_usage": 8.2
+            },
+            {
+              "core": 64,
+              "avg_usage": 75.14999999999999,
+              "max_usage": 100.0,
+              "min_usage": 23.5
+            },
+            {
+              "core": 65,
+              "avg_usage": 73.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 22.0
+            },
+            {
+              "core": 66,
+              "avg_usage": 59.333333333333336,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 67,
+              "avg_usage": 80.33333333333333,
+              "max_usage": 100.0,
+              "min_usage": 24.0
+            },
+            {
+              "core": 68,
+              "avg_usage": 81.11666666666666,
+              "max_usage": 100.0,
+              "min_usage": 34.7
+            },
+            {
+              "core": 69,
+              "avg_usage": 73.01666666666667,
+              "max_usage": 100.0,
+              "min_usage": 0.0
+            },
+            {
+              "core": 70,
+              "avg_usage": 80.65,
+              "max_usage": 100.0,
+              "min_usage": 34.7
+            },
+            {
+              "core": 71,
+              "avg_usage": 63.583333333333336,
+              "max_usage": 100.0,
+              "min_usage": 8.0
+            }
+          ],
+          "sample_count": 6
+        }
+      ],
+      "avg_time": 2.829162647637228,
+      "std_time": 0.005308950630651706,
+      "avg_accuracy": 0.9695333333333332,
+      "std_accuracy": 0.0005557777333511276,
+      "avg_cpu_usage": 70.47762345679011
+    }
+  },
+  "cpu_analysis": {
+    "total_logical_cores": 72,
+    "total_physical_cores": 36,
+    "avg_cpu_utilization": 53.92519290123456
+  },
+  "summary": {
+    "best_accuracy": 0.9695333333333332,
+    "best_accuracy_estimators": 200,
+    "fastest_training": 1.0046522362778585,
+    "fastest_estimators": 50,
+    "most_efficient": 50
+  }
+}
