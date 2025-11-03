@@ -19,10 +19,11 @@ public:
     
 private:
     void monitor_loop();
-    std::vector<double> read_cpu_usage();
-    double read_total_cpu_usage();
+    std::vector<double> read_process_cpu_usage();
+    double read_total_process_cpu_usage();
     
     int n_cores_;
+    int pid_;
     std::atomic<bool> running_;
     std::thread monitor_thread_;
     
@@ -30,13 +31,23 @@ private:
     std::vector<double> timeline_;
     std::vector<std::vector<double>> per_core_timeline_;
     
-    // For calculating CPU usage on Linux
-    struct CPUStats {
-        long long user, nice, system, idle, iowait, irq, softirq;
+    // For calculating process-specific CPU usage on Linux
+    struct ProcessStats {
+        long long utime;      // user mode time
+        long long stime;      // kernel mode time
+        long long cutime;     // children user mode time
+        long long cstime;     // children kernel mode time
     };
     
-    std::vector<CPUStats> prev_stats_;
-    CPUStats read_cpu_stats(int core = -1);
+    struct SystemStats {
+        long long total_time;
+    };
+    
+    ProcessStats prev_process_stats_;
+    SystemStats prev_system_stats_;
+    
+    ProcessStats read_process_stats();
+    SystemStats read_system_stats();
 };
 
 } // namespace rf_benchmark

@@ -5,13 +5,16 @@
 #include <thread>
 #include <algorithm>
 #include <numeric>
+#include <unistd.h>
 
 namespace rf_benchmark {
 
 CPUMonitor::CPUMonitor(int n_cores) 
     : n_cores_(n_cores)
+    , pid_(getpid())
     , running_(false) {
-    prev_stats_.resize(n_cores_ + 1); // +1 for total CPU
+    prev_process_stats_ = {0, 0, 0, 0};
+    prev_system_stats_ = {0};
 }
 
 CPUMonitor::~CPUMonitor() {
@@ -29,9 +32,8 @@ void CPUMonitor::start_monitoring() {
     per_core_timeline_.resize(n_cores_);
     
     // Initialize previous stats
-    for (int i = 0; i <= n_cores_; ++i) {
-        prev_stats_[i] = read_cpu_stats(i - 1);
-    }
+    prev_process_stats_ = read_process_stats();
+    prev_system_stats_ = read_system_stats();
     
     monitor_thread_ = std::thread(&CPUMonitor::monitor_loop, this);
 }
@@ -49,8 +51,8 @@ void CPUMonitor::monitor_loop() {
     while (running_) {
         std::this_thread::sleep_for(std::chrono::milliseconds(100));
         
-        double total_usage = read_total_cpu_usage();
-        std::vector<double> core_usage = read_cpu_usage();
+        double total_usage = read_total_process_cpu_usage();
+        std::vector<double> core_usage = read_process_cpu_usage();
         
         std::lock_guard<std::mutex> lock(data_mutex_);
         timeline_.push_back(total_usage);
@@ -61,72 +63,85 @@ void CPUMonitor::monitor_loop() {
     }
 }
 
-CPUMonitor::CPUStats CPUMonitor::read_cpu_stats(int core) {
-    std::ifstream file("/proc/stat");
-    std::string line;
-    CPUStats stats = {0, 0, 0, 0, 0, 0, 0};
+CPUMonitor::ProcessStats CPUMonitor::read_process_stats() {
+    ProcessStats stats = {0, 0, 0, 0};
     
-    std::string search_str = (core < 0) ? "cpu " : "cpu" + std::to_string(core) + " ";
-    
-    while (std::getline(file, line)) {
-        if (line.find(search_str) == 0) {
-            std::istringstream iss(line);
-            std::string cpu;
-            iss >> cpu >> stats.user >> stats.nice >> stats.system >> stats.idle 
-                >> stats.iowait >> stats.irq >> stats.softirq;
-            break;
-        }
+    std::string stat_path = "/proc/" + std::to_string(pid_) + "/stat";
+    std::ifstream file(stat_path);
+    if (!file.is_open()) {
+        return stats;
     }
+    
+    std::string line;
+    std::getline(file, line);
+    
+    // Parse /proc/[pid]/stat
+    // Format: pid (comm) state ppid ... utime stime cutime cstime ...
+    std::istringstream iss(line);
+    std::string token;
+    
+    // Skip first 13 fields to get to utime (field 14)
+    for (int i = 0; i < 13; ++i) {
+        iss >> token;
+    }
+    
+    // Read utime, stime, cutime, cstime (fields 14-17)
+    iss >> stats.utime >> stats.stime >> stats.cutime >> stats.cstime;
     
     return stats;
 }
 
-double CPUMonitor::read_total_cpu_usage() {
-    CPUStats curr = read_cpu_stats(-1);
-    CPUStats& prev = prev_stats_[0];
+CPUMonitor::SystemStats CPUMonitor::read_system_stats() {
+    SystemStats stats = {0};
     
-    long long prev_idle = prev.idle + prev.iowait;
-    long long curr_idle = curr.idle + curr.iowait;
+    std::ifstream file("/proc/stat");
+    if (!file.is_open()) {
+        return stats;
+    }
     
-    long long prev_total = prev.user + prev.nice + prev.system + prev.idle + 
-                           prev.iowait + prev.irq + prev.softirq;
-    long long curr_total = curr.user + curr.nice + curr.system + curr.idle + 
-                           curr.iowait + curr.irq + curr.softirq;
+    std::string line;
+    std::getline(file, line);
     
-    long long total_diff = curr_total - prev_total;
-    long long idle_diff = curr_idle - prev_idle;
+    // First line is total CPU: cpu user nice system idle iowait irq softirq ...
+    std::istringstream iss(line);
+    std::string cpu;
+    long long user, nice, system, idle, iowait, irq, softirq;
     
-    prev = curr;
+    iss >> cpu >> user >> nice >> system >> idle >> iowait >> irq >> softirq;
+    stats.total_time = user + nice + system + idle + iowait + irq + softirq;
     
-    if (total_diff == 0) return 0.0;
-    return 100.0 * (total_diff - idle_diff) / total_diff;
+    return stats;
 }
 
-std::vector<double> CPUMonitor::read_cpu_usage() {
+double CPUMonitor::read_total_process_cpu_usage() {
+    ProcessStats curr_proc = read_process_stats();
+    SystemStats curr_sys = read_system_stats();
+    
+    long long proc_time_diff = (curr_proc.utime + curr_proc.stime + curr_proc.cutime + curr_proc.cstime) -
+                                (prev_process_stats_.utime + prev_process_stats_.stime + 
+                                 prev_process_stats_.cutime + prev_process_stats_.cstime);
+    long long sys_time_diff = curr_sys.total_time - prev_system_stats_.total_time;
+    
+    prev_process_stats_ = curr_proc;
+    prev_system_stats_ = curr_sys;
+    
+    if (sys_time_diff == 0) return 0.0;
+    
+    // CPU usage as percentage (multiply by n_cores to normalize to 100% max per core)
+    return 100.0 * n_cores_ * proc_time_diff / sys_time_diff;
+}
+
+std::vector<double> CPUMonitor::read_process_cpu_usage() {
     std::vector<double> usage(n_cores_);
     
+    // Get total process CPU usage
+    double total_usage = read_total_process_cpu_usage();
+    
+    // Distribute evenly across cores
+    // (More sophisticated tracking would require monitoring thread affinity)
+    double per_core = total_usage / n_cores_;
     for (int i = 0; i < n_cores_; ++i) {
-        CPUStats curr = read_cpu_stats(i);
-        CPUStats& prev = prev_stats_[i + 1];
-        
-        long long prev_idle = prev.idle + prev.iowait;
-        long long curr_idle = curr.idle + curr.iowait;
-        
-        long long prev_total = prev.user + prev.nice + prev.system + prev.idle + 
-                               prev.iowait + prev.irq + prev.softirq;
-        long long curr_total = curr.user + curr.nice + curr.system + curr.idle + 
-                               curr.iowait + curr.irq + curr.softirq;
-        
-        long long total_diff = curr_total - prev_total;
-        long long idle_diff = curr_idle - prev_idle;
-        
-        prev = curr;
-        
-        if (total_diff == 0) {
-            usage[i] = 0.0;
-        } else {
-            usage[i] = 100.0 * (total_diff - idle_diff) / total_diff;
-        }
+        usage[i] = per_core;
     }
     
     return usage;

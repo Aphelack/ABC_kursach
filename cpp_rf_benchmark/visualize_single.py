@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Visualize single Random Forest benchmark results from JSON report.
+Generates separate high-resolution graphics files.
 Usage: python visualize_single.py <report.json>
 """
 
@@ -13,7 +14,6 @@ from pathlib import Path
 
 # Set style
 sns.set_style("whitegrid")
-plt.rcParams['figure.figsize'] = (16, 12)
 plt.rcParams['font.size'] = 10
 
 def load_report(filename):
@@ -21,143 +21,251 @@ def load_report(filename):
     with open(filename, 'r') as f:
         return json.load(f)
 
-def plot_benchmark_results(report, output_dir=None):
-    """Create comprehensive visualization of benchmark results"""
-    
-    # Extract data
-    system_info = report['system_info']
-    results = report['results']
-    dataset = report['dataset']
-    config = report['config']
-    
+def get_cpu_name_short(cpu_model):
+    """Get shortened CPU name for filenames"""
+    # Remove common words and shorten
+    name = cpu_model.replace(' with Radeon Graphics', '')
+    name = name.replace('AMD ', '').replace('Intel ', '')
+    name = name.replace('(R)', '').replace('(TM)', '')
+    name = name.replace(' ', '_')
+    return name[:50]  # Limit length
+
+def plot_training_time(results, cpu_name, output_dir):
+    """Plot training time vs estimators"""
     estimators = [r['n_estimators'] for r in results]
     avg_times = [r['avg_time'] for r in results]
     std_times = [r['std_time'] for r in results]
-    avg_f1_scores = [r['avg_f1_score'] * 100 for r in results]
-    std_f1_scores = [r['std_f1_score'] * 100 for r in results]
-    avg_cpu = [r['avg_cpu_usage'] for r in results]
-    max_cpu = [r['max_cpu_usage'] for r in results]
     
-    # Create figure with subplots
-    fig = plt.figure(figsize=(18, 14))
-    
-    # Title
-    cpu_name = system_info['cpu_model']
-    fig.suptitle(f'Random Forest Benchmark Results\n{cpu_name}', 
-                 fontsize=16, fontweight='bold', y=0.995)
-    
-    # Create grid
-    gs = fig.add_gridspec(4, 3, hspace=0.3, wspace=0.3)
-    
-    # 1. Training Time
-    ax1 = fig.add_subplot(gs[0, :2])
-    bars1 = ax1.bar(range(len(estimators)), avg_times, 
-                    yerr=std_times, capsize=5, alpha=0.7, color='steelblue')
-    ax1.set_xlabel('Number of Estimators', fontweight='bold')
-    ax1.set_ylabel('Training Time (seconds)', fontweight='bold')
-    ax1.set_title('Training Time vs Number of Estimators', fontweight='bold', pad=10)
-    ax1.set_xticks(range(len(estimators)))
-    ax1.set_xticklabels(estimators)
-    ax1.grid(True, alpha=0.3)
-    
-    # Add value labels on bars
-    for i, (bar, val, std) in enumerate(zip(bars1, avg_times, std_times)):
-        height = bar.get_height()
-        ax1.text(bar.get_x() + bar.get_width()/2., height,
-                f'{val:.3f}s\n±{std:.3f}',
-                ha='center', va='bottom', fontsize=9)
-    
-    # 2. CPU Usage
-    ax2 = fig.add_subplot(gs[0, 2])
-    x = np.arange(len(estimators))
-    width = 0.35
-    bars2a = ax2.bar(x - width/2, avg_cpu, width, label='Average', alpha=0.8, color='orange')
-    bars2b = ax2.bar(x + width/2, max_cpu, width, label='Maximum', alpha=0.8, color='red')
-    ax2.set_xlabel('Estimators', fontweight='bold')
-    ax2.set_ylabel('CPU Usage (%)', fontweight='bold')
-    ax2.set_title('CPU Usage', fontweight='bold', pad=10)
-    ax2.set_xticks(x)
-    ax2.set_xticklabels(estimators)
-    ax2.legend()
-    ax2.grid(True, alpha=0.3)
-    
-    # 3. F1-Score
-    ax3 = fig.add_subplot(gs[1, :2])
-    bars3 = ax3.bar(range(len(estimators)), avg_f1_scores,
-                    yerr=std_f1_scores, capsize=5, alpha=0.7, color='green')
-    ax3.set_xlabel('Number of Estimators', fontweight='bold')
-    ax3.set_ylabel('F1-Score (%)', fontweight='bold')
-    ax3.set_title('F1-Score vs Number of Estimators', fontweight='bold', pad=10)
-    ax3.set_xticks(range(len(estimators)))
-    ax3.set_xticklabels(estimators)
-    ax3.set_ylim([max(0, min(avg_f1_scores) - 5), 100])
-    ax3.grid(True, alpha=0.3)
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars = ax.bar(range(len(estimators)), avg_times, 
+                  yerr=std_times, capsize=5, alpha=0.7, color='steelblue')
+    ax.set_xlabel('Number of Estimators', fontweight='bold')
+    ax.set_ylabel('Training Time (seconds)', fontweight='bold')
+    ax.set_title(f'Training Time vs Number of Estimators\n{cpu_name}', 
+                 fontweight='bold', pad=10)
+    ax.set_xticks(range(len(estimators)))
+    ax.set_xticklabels(estimators)
+    ax.grid(True, alpha=0.3)
     
     # Add value labels
-    for bar, val, std in zip(bars3, avg_f1_scores, std_f1_scores):
+    for bar, val, std in zip(bars, avg_times, std_times):
         height = bar.get_height()
-        ax3.text(bar.get_x() + bar.get_width()/2., height,
+        ax.text(bar.get_x() + bar.get_width()/2., height,
+                f'{val:.2f}s\n±{std:.3f}',
+                ha='center', va='bottom', fontsize=9)
+    
+    plt.tight_layout()
+    filename = output_dir / '1_training_time.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f'  ✓ {filename}')
+    plt.close()
+
+def plot_f1_score(results, cpu_name, output_dir):
+    """Plot F1-score vs estimators"""
+    estimators = [r['n_estimators'] for r in results]
+    avg_f1 = [r['avg_f1_score'] * 100 for r in results]
+    std_f1 = [r['std_f1_score'] * 100 for r in results]
+    
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars = ax.bar(range(len(estimators)), avg_f1,
+                  yerr=std_f1, capsize=5, alpha=0.7, color='green')
+    ax.set_xlabel('Number of Estimators', fontweight='bold')
+    ax.set_ylabel('F1-Score (%)', fontweight='bold')
+    ax.set_title(f'F1-Score vs Number of Estimators\n{cpu_name}', 
+                 fontweight='bold', pad=10)
+    ax.set_xticks(range(len(estimators)))
+    ax.set_xticklabels(estimators)
+    ax.set_ylim([max(0, min(avg_f1) - 5), min(100, max(avg_f1) + 5)])
+    ax.grid(True, alpha=0.3)
+    
+    # Add value labels
+    for bar, val, std in zip(bars, avg_f1, std_f1):
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2., height,
                 f'{val:.2f}%\n±{std:.3f}',
                 ha='center', va='bottom', fontsize=9)
     
-    # 4. Efficiency (F1-Score / Time)
-    ax4 = fig.add_subplot(gs[1, 2])
-    efficiency = [f1 / time if time > 0 else 0 
-                  for f1, time in zip(avg_f1_scores, avg_times)]
-    bars4 = ax4.bar(range(len(estimators)), efficiency, alpha=0.7, color='purple')
-    ax4.set_xlabel('Estimators', fontweight='bold')
-    ax4.set_ylabel('Efficiency (F1% / sec)', fontweight='bold')
-    ax4.set_title('Training Efficiency', fontweight='bold', pad=10)
-    ax4.set_xticks(range(len(estimators)))
-    ax4.set_xticklabels(estimators)
-    ax4.grid(True, alpha=0.3)
+    plt.tight_layout()
+    filename = output_dir / '2_f1_score.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f'  ✓ {filename}')
+    plt.close()
+
+def plot_cpu_usage(results, cpu_name, output_dir):
+    """Plot CPU usage"""
+    estimators = [r['n_estimators'] for r in results]
+    avg_cpu = [r['avg_cpu_usage'] for r in results]
+    max_cpu = [r['max_cpu_usage'] for r in results]
     
-    # 5. Per-Core CPU Usage Heatmap
-    ax5 = fig.add_subplot(gs[2, :])
+    fig, ax = plt.subplots(figsize=(10, 6))
+    x = np.arange(len(estimators))
+    width = 0.35
+    bars1 = ax.bar(x - width/2, avg_cpu, width, label='Average', alpha=0.8, color='orange')
+    bars2 = ax.bar(x + width/2, max_cpu, width, label='Maximum', alpha=0.8, color='red')
+    ax.set_xlabel('Number of Estimators', fontweight='bold')
+    ax.set_ylabel('CPU Usage (%)', fontweight='bold')
+    ax.set_title(f'CPU Usage\n{cpu_name}', fontweight='bold', pad=10)
+    ax.set_xticks(x)
+    ax.set_xticklabels(estimators)
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    filename = output_dir / '3_cpu_usage.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f'  ✓ {filename}')
+    plt.close()
+
+def plot_cpu_timeline(results, cpu_name, output_dir):
+    """Plot CPU usage over time"""
+    fig, ax = plt.subplots(figsize=(14, 6))
+    
+    for r in results:
+        timeline = r['cpu_metrics']['timeline']
+        if timeline:
+            time_points = np.arange(len(timeline)) * 0.1  # 100ms sampling
+            ax.plot(time_points, timeline, label=f'{r["n_estimators"]} trees', 
+                   linewidth=1.5, alpha=0.8)
+    
+    ax.set_xlabel('Time (seconds)', fontweight='bold')
+    ax.set_ylabel('CPU Usage (%)', fontweight='bold')
+    ax.set_title(f'CPU Usage Over Time\n{cpu_name}', fontweight='bold', pad=10)
+    ax.legend()
+    ax.grid(True, alpha=0.3)
+    
+    plt.tight_layout()
+    filename = output_dir / '4_cpu_timeline.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f'  ✓ {filename}')
+    plt.close()
+
+def plot_per_core_heatmap(results, system_info, cpu_name, output_dir):
+    """Plot per-core CPU usage heatmap with high resolution for many cores"""
+    estimators = [r['n_estimators'] for r in results]
     n_cores = system_info['logical_cores']
+    
     per_core_data = []
     for r in results:
         per_core_data.append(r['cpu_metrics']['per_core_usage'])
     
-    if per_core_data and len(per_core_data[0]) > 0:
-        heatmap_data = np.array(per_core_data)
-        im = ax5.imshow(heatmap_data.T, cmap='YlOrRd', aspect='auto', vmin=0, vmax=100)
-        ax5.set_xlabel('Configuration (Estimators)', fontweight='bold')
-        ax5.set_ylabel('CPU Core', fontweight='bold')
-        ax5.set_title('CPU Usage Distribution Across Cores', fontweight='bold', pad=10)
-        ax5.set_xticks(range(len(estimators)))
-        ax5.set_xticklabels(estimators)
-        ax5.set_yticks(range(min(n_cores, len(per_core_data[0]))))
-        ax5.set_yticklabels(range(min(n_cores, len(per_core_data[0]))))
-        
-        # Add colorbar
-        cbar = plt.colorbar(im, ax=ax5)
-        cbar.set_label('CPU Usage (%)', fontweight='bold')
-        
-        # Add text annotations
-        for i in range(len(estimators)):
-            for j in range(min(n_cores, len(per_core_data[0]))):
-                text = ax5.text(i, j, f'{heatmap_data[i, j]:.1f}',
-                               ha="center", va="center", color="black", fontsize=7)
+    if not per_core_data or len(per_core_data[0]) == 0:
+        print('  ⚠ No per-core data available')
+        return
     
-    # 6. Run Variations
-    ax6 = fig.add_subplot(gs[3, 0])
-    for i, r in enumerate(results):
+    heatmap_data = np.array(per_core_data).T  # Transpose: cores x configs
+    
+    # Dynamic figure height based on number of cores
+    # More cores = taller figure for better readability
+    fig_height = max(8, min(30, n_cores * 0.25))
+    
+    fig, ax = plt.subplots(figsize=(12, fig_height))
+    im = ax.imshow(heatmap_data, cmap='YlOrRd', aspect='auto', vmin=0, vmax=100)
+    
+    ax.set_xlabel('Configuration (Number of Estimators)', fontweight='bold', fontsize=12)
+    ax.set_ylabel('CPU Core', fontweight='bold', fontsize=12)
+    ax.set_title(f'CPU Usage Distribution Across {n_cores} Cores\n{cpu_name}', 
+                 fontweight='bold', pad=15, fontsize=14)
+    
+    ax.set_xticks(range(len(estimators)))
+    ax.set_xticklabels(estimators)
+    ax.set_yticks(range(len(per_core_data[0])))
+    ax.set_yticklabels([f'Core {i}' for i in range(len(per_core_data[0]))])
+    
+    # Add colorbar
+    cbar = plt.colorbar(im, ax=ax, pad=0.02)
+    cbar.set_label('CPU Usage (%)', fontweight='bold', fontsize=11)
+    
+    # Add text annotations (only if not too many cores)
+    if n_cores <= 32:
+        for i in range(len(estimators)):
+            for j in range(len(per_core_data[0])):
+                text = ax.text(i, j, f'{heatmap_data[j, i]:.1f}',
+                             ha="center", va="center", color="black", fontsize=8)
+    
+    plt.tight_layout()
+    filename = output_dir / '5_per_core_heatmap.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f'  ✓ {filename}')
+    plt.close()
+
+def plot_efficiency(results, cpu_name, output_dir):
+    """Plot training efficiency (F1/time)"""
+    estimators = [r['n_estimators'] for r in results]
+    avg_f1 = [r['avg_f1_score'] * 100 for r in results]
+    avg_times = [r['avg_time'] for r in results]
+    efficiency = [f1 / time if time > 0 else 0 for f1, time in zip(avg_f1, avg_times)]
+    
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bars = ax.bar(range(len(estimators)), efficiency, alpha=0.7, color='purple')
+    ax.set_xlabel('Number of Estimators', fontweight='bold')
+    ax.set_ylabel('Efficiency (F1% / second)', fontweight='bold')
+    ax.set_title(f'Training Efficiency\n{cpu_name}', fontweight='bold', pad=10)
+    ax.set_xticks(range(len(estimators)))
+    ax.set_xticklabels(estimators)
+    ax.grid(True, alpha=0.3)
+    
+    # Add value labels
+    for bar, val in zip(bars, efficiency):
+        height = bar.get_height()
+        ax.text(bar.get_x() + bar.get_width()/2., height,
+                f'{val:.2f}',
+                ha='center', va='bottom', fontsize=9)
+    
+    plt.tight_layout()
+    filename = output_dir / '6_efficiency.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f'  ✓ {filename}')
+    plt.close()
+
+def plot_run_variations(results, cpu_name, output_dir):
+    """Plot variation across runs"""
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(14, 6))
+    
+    # Time variations
+    for r in results:
         run_times = r['run_times']
         runs = list(range(1, len(run_times) + 1))
-        ax6.plot(runs, run_times, marker='o', label=f'{r["n_estimators"]} trees', linewidth=2)
-    ax6.set_xlabel('Run Number', fontweight='bold')
-    ax6.set_ylabel('Time (seconds)', fontweight='bold')
-    ax6.set_title('Training Time Variation Across Runs', fontweight='bold', pad=10)
-    ax6.legend()
-    ax6.grid(True, alpha=0.3)
+        ax1.plot(runs, run_times, marker='o', label=f'{r["n_estimators"]} trees', 
+                linewidth=2, markersize=8)
+    ax1.set_xlabel('Run Number', fontweight='bold')
+    ax1.set_ylabel('Time (seconds)', fontweight='bold')
+    ax1.set_title('Training Time Variation', fontweight='bold', pad=10)
+    ax1.legend()
+    ax1.grid(True, alpha=0.3)
     
-    # 7. System Info Table
-    ax7 = fig.add_subplot(gs[3, 1:])
-    ax7.axis('tight')
-    ax7.axis('off')
+    # F1 variations
+    for r in results:
+        run_f1 = [f * 100 for f in r['run_f1_scores']]
+        runs = list(range(1, len(run_f1) + 1))
+        ax2.plot(runs, run_f1, marker='s', label=f'{r["n_estimators"]} trees', 
+                linewidth=2, markersize=8)
+    ax2.set_xlabel('Run Number', fontweight='bold')
+    ax2.set_ylabel('F1-Score (%)', fontweight='bold')
+    ax2.set_title('F1-Score Variation', fontweight='bold', pad=10)
+    ax2.legend()
+    ax2.grid(True, alpha=0.3)
+    
+    fig.suptitle(f'Variations Across Runs\n{cpu_name}', fontweight='bold', fontsize=14)
+    plt.tight_layout()
+    
+    filename = output_dir / '7_run_variations.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f'  ✓ {filename}')
+    plt.close()
+
+def create_summary_table(report, output_dir):
+    """Create summary table as image"""
+    system_info = report['system_info']
+    dataset = report['dataset']
+    config = report['config']
+    summary = report.get('summary', {})
+    
+    fig, ax = plt.subplots(figsize=(10, 8))
+    ax.axis('tight')
+    ax.axis('off')
     
     info_data = [
+        ['SYSTEM INFORMATION', ''],
         ['CPU Model', system_info['cpu_model']],
         ['Architecture', system_info['architecture']],
         ['Logical Cores', str(system_info['logical_cores'])],
@@ -165,86 +273,83 @@ def plot_benchmark_results(report, output_dir=None):
         ['Memory', f"{system_info['total_memory'] / (1024**3):.2f} GB"],
         ['OS', f"{system_info['os_name']} {system_info['os_version']}"],
         ['', ''],
+        ['DATASET INFORMATION', ''],
         ['Train Samples', str(dataset['train_samples'])],
         ['Test Samples', str(dataset['test_samples'])],
         ['Features', str(dataset['n_features'])],
         ['Classes', str(dataset['n_classes'])],
+        ['', ''],
+        ['CONFIGURATION', ''],
         ['Max Depth', str(config['max_depth'])],
         ['Runs per Config', str(config['num_runs'])],
+        ['Test Size', f"{config['test_size']*100}%"],
+        ['', ''],
+        ['BEST RESULTS', ''],
+        ['Best F1-Score', f"{summary.get('best_f1_score', 0)*100:.2f}% ({summary.get('best_f1_score_estimators', 'N/A')} estimators)"],
+        ['Fastest Time', f"{summary.get('fastest_time', 0):.2f}s ({summary.get('fastest_estimators', 'N/A')} estimators)"],
+        ['Most Efficient', f"{summary.get('most_efficient_estimators', 'N/A')} estimators"],
     ]
     
-    table = ax7.table(cellText=info_data, cellLoc='left', loc='center',
-                     colWidths=[0.35, 0.65])
+    table = ax.table(cellText=info_data, cellLoc='left', loc='center',
+                     colWidths=[0.4, 0.6])
     table.auto_set_font_size(False)
-    table.set_fontsize(9)
-    table.scale(1, 2)
+    table.set_fontsize(10)
+    table.scale(1, 2.5)
     
-    # Style table
-    for i in range(len(info_data)):
-        table[(i, 0)].set_facecolor('#E8E8E8')
-        table[(i, 0)].set_text_props(weight='bold')
+    # Style header rows
+    for i in [0, 8, 14, 18]:
+        table[(i, 0)].set_facecolor('#3498db')
+        table[(i, 0)].set_text_props(weight='bold', color='white')
+        table[(i, 1)].set_facecolor('#3498db')
     
-    ax7.set_title('System & Configuration Details', fontweight='bold', pad=10, loc='left')
+    plt.title(f'Benchmark Summary\n{system_info["cpu_model"]}', 
+              fontweight='bold', fontsize=14, pad=20)
     
-    # Save figure
-    if output_dir:
-        output_path = Path(output_dir)
-    else:
-        output_path = Path('.')
-    
-    output_file = output_path / f"benchmark_visualization_{system_info.get('cpu_model', 'unknown').replace(' ', '_')}.png"
-    plt.savefig(output_file, dpi=300, bbox_inches='tight')
-    print(f"\n✅ Visualization saved to: {output_file}")
-    
-    plt.show()
-
-def print_summary(report):
-    """Print text summary of results"""
-    print("\n" + "="*80)
-    print("BENCHMARK SUMMARY")
-    print("="*80)
-    
-    system_info = report['system_info']
-    results = report['results']
-    summary = report.get('summary', {})
-    
-    print(f"\nCPU: {system_info['cpu_model']}")
-    print(f"Cores: {system_info['logical_cores']} logical, {system_info['physical_cores']} physical")
-    print(f"Memory: {system_info['total_memory'] / (1024**3):.2f} GB")
-    
-    print(f"\nResults:")
-    print(f"{'Estimators':<12} {'Time (sec)':<15} {'F1-Score (%)':<15} {'CPU (%)':<12}")
-    print("-" * 80)
-    
-    for r in results:
-        print(f"{r['n_estimators']:<12} "
-              f"{r['avg_time']:<15.3f} "
-              f"{r['avg_f1_score']*100:<15.2f} "
-              f"{r['avg_cpu_usage']:<12.1f}")
-    
-    if summary:
-        print(f"\nOptimal Configurations:")
-        print(f"  🎯 Best F1-Score: {summary['best_f1_score']*100:.2f}% "
-              f"({summary['best_f1_score_estimators']} estimators)")
-        print(f"  ⚡ Fastest: {summary['fastest_time']:.3f} sec "
-              f"({summary['fastest_estimators']} estimators)")
-        print(f"  ⭐ Most Efficient: {summary['most_efficient_estimators']} estimators")
-    
-    print("\n" + "="*80)
+    filename = output_dir / '0_summary.png'
+    plt.savefig(filename, dpi=300, bbox_inches='tight')
+    print(f'  ✓ {filename}')
+    plt.close()
 
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python visualize_single.py <report.json> [output_dir]")
+        print("Usage: python visualize_single.py <report.json>")
         sys.exit(1)
     
     report_file = sys.argv[1]
-    output_dir = sys.argv[2] if len(sys.argv) > 2 else None
     
-    print(f"Loading report: {report_file}")
+    if not Path(report_file).exists():
+        print(f"Error: File '{report_file}' not found")
+        sys.exit(1)
+    
+    print(f"\n📊 Loading benchmark report: {report_file}")
     report = load_report(report_file)
     
-    print_summary(report)
-    plot_benchmark_results(report, output_dir)
+    # Create output directory
+    cpu_short = get_cpu_name_short(report['system_info']['cpu_model'])
+    output_dir = Path(f'graphs_{cpu_short}')
+    output_dir.mkdir(exist_ok=True)
+    
+    print(f"\n📁 Output directory: {output_dir}/")
+    print("\n🎨 Generating graphics...")
+    
+    cpu_name = report['system_info']['cpu_model']
+    results = report['results']
+    system_info = report['system_info']
+    
+    # Generate all plots
+    create_summary_table(report, output_dir)
+    plot_training_time(results, cpu_name, output_dir)
+    plot_f1_score(results, cpu_name, output_dir)
+    plot_cpu_usage(results, cpu_name, output_dir)
+    plot_cpu_timeline(results, cpu_name, output_dir)
+    plot_per_core_heatmap(results, system_info, cpu_name, output_dir)
+    plot_efficiency(results, cpu_name, output_dir)
+    plot_run_variations(results, cpu_name, output_dir)
+    
+    print(f"\n✅ All graphics generated successfully in {output_dir}/")
+    print(f"\nGenerated files:")
+    for f in sorted(output_dir.glob('*.png')):
+        print(f"  • {f.name}")
 
 if __name__ == '__main__':
     main()
