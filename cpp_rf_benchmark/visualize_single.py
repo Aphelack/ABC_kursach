@@ -213,19 +213,19 @@ def print_summary(report):
     print(f"Memory: {system_info['total_memory'] / (1024**3):.2f} GB")
     
     print(f"\nResults:")
-    print(f"{'Estimators':<12} {'Time (sec)':<15} {'Accuracy (%)':<15} {'CPU (%)':<12}")
+    print(f"{'Estimators':<12} {'Time (sec)':<15} {'F1-Score (%)':<15} {'CPU (%)':<12}")
     print("-" * 80)
     
     for r in results:
         print(f"{r['n_estimators']:<12} "
               f"{r['avg_time']:<15.3f} "
-              f"{r['avg_accuracy']*100:<15.2f} "
+              f"{r['avg_f1_score']*100:<15.2f} "
               f"{r['avg_cpu_usage']:<12.1f}")
     
     if summary:
         print(f"\nOptimal Configurations:")
-        print(f"  🎯 Best Accuracy: {summary['best_accuracy']*100:.2f}% "
-              f"({summary['best_accuracy_estimators']} estimators)")
+        print(f"  🎯 Best F1-Score: {summary['best_f1_score']*100:.2f}% "
+              f"({summary['best_f1_score_estimators']} estimators)")
         print(f"  ⚡ Fastest: {summary['fastest_time']:.3f} sec "
               f"({summary['fastest_estimators']} estimators)")
         print(f"  ⭐ Most Efficient: {summary['most_efficient_estimators']} estimators")

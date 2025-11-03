@@ -2,23 +2,108 @@
 
 A high-performance multithreaded Random Forest implementation in C++ with comprehensive CPU monitoring and cross-processor comparison capabilities.
 
-## Quick Start
-
-Run benchmark with credit card fraud dataset (1% sample):
-```bash
-./run_benchmark.sh
-```
-
 ## Features
 
-- **Multithreaded Random Forest**: Parallel tree training using thread pool
-- **Real-time CPU Monitoring**: Per-core CPU usage tracking during training
-- **F1-Score Evaluation**: Uses F1-score metric for imbalanced classification problems
-- **Stratified Sampling**: Maintains class balance when sampling from dataset
-- **JSON Reports**: Detailed benchmarking reports with processor information
+- **Multithreaded Random Forest**: Parallel tree training using thread pool with thread-local RNG
+- **Real-time CPU Monitoring**: Per-core CPU usage tracking during training (100ms sampling)
+- **F1-Score Evaluation**: Uses F1-score metric for imbalanced classification (fraud detection)
+- **Stratified Sampling**: Maintains class balance when sampling from imbalanced datasets
+- **JSON Reports**: Detailed benchmarking reports with processor name in filename
 - **Cross-processor Comparison**: Python scripts for visualizing performance differences
-- **Optimized Tree Building**: Smart threshold sampling for faster training
-- **Credit Card Fraud Detection**: Uses Kaggle credit card fraud dataset for realistic benchmarking
+- **Optimized Tree Building**: Smart threshold sampling (max 50 splits/feature) for faster training
+- **Credit Card Fraud Detection**: Kaggle dataset (284K samples, 0.17% fraud) for realistic benchmarking
+
+## Quick Start
+
+### Download Dataset
+
+```bash
+cd ../dataset
+wget https://storage.googleapis.com/kaggle-data-sets/310/684/compressed/creditcard.csv.zip
+unzip creditcard.csv.zip
+```
+
+### Build and Run
+
+```bash
+cd ../cpp_rf_benchmark
+./build.sh              # Compile project
+./build/rf_benchmark    # Run on full dataset (~40-60s for 100 estimators)
+```
+
+### Visualize Results
+
+```bash
+python3 visualize_single.py rf_benchmark_<CPU_NAME>_<TIMESTAMP>.json
+```
+
+## Benchmark Configuration
+
+Default settings (optimized for credit card fraud dataset):
+
+```cpp
+n_estimators: [50, 100, 200]   // Number of trees to test
+max_depth: 15                   // Maximum tree depth
+num_runs: 3                     // Runs per configuration
+test_size: 0.2                  // 80/20 train/test split
+n_threads: -1                   // Use all CPU cores
+sample_fraction: 1.0            // Full dataset (284K samples)
+```
+
+### Performance Expectations
+
+Based on sklearn baseline (100 estimators, full dataset = ~40s):
+
+- **50 estimators**: ~15-20s
+- **100 estimators**: ~30-40s  
+- **200 estimators**: ~60-80s
+
+Actual time varies by CPU. Our C++ implementation includes:
+- Stratified sampling for class balance
+- Max 50 thresholds per feature (vs sklearn's all unique values)
+- Thread-local RNG for thread safety
+- Parallel tree training with optimal core utilization
+
+## Expected Results
+
+**F1-Score**: 70-90% (highly imbalanced dataset, 0.17% fraud)
+**CPU Usage**: 85-95% on multi-core systems
+**Memory**: ~2-3 GB for full dataset
+
+## Cross-Processor Comparison Workflow
+
+### Step 1: Run on First Processor
+
+```bash
+# On Machine A (e.g., Intel i7)
+./build/rf_benchmark
+# Generates: rf_benchmark_Intel_Core_i7_9700K_<timestamp>.json
+```
+
+### Step 2: Run on Second Processor
+
+```bash
+# On Machine B (e.g., AMD Ryzen)
+./build/rf_benchmark
+# Generates: rf_benchmark_AMD_Ryzen_7_5800X_<timestamp>.json
+```
+
+### Step 3: Transfer and Compare
+
+Copy both JSON files to one machine:
+
+```bash
+python3 compare_processors.py \
+    rf_benchmark_Intel_Core_i7_9700K_<time1>.json \
+    rf_benchmark_AMD_Ryzen_7_5800X_<time2>.json
+```
+
+Output shows:
+- Speedup factors per configuration
+- Time reduction percentages
+- CPU utilization comparison
+- Side-by-side bar charts
+- Efficiency analysis (F1-score/sec)
 
 ## Project Structure
 
