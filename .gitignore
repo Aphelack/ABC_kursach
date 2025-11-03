@@ -26,3 +26,6 @@ target/
 .gradle/
 cmake-build-*/
 dataset/
+
+cpp_rf_benchmark/*.png
+cpp_rf_benchmark/*.json
