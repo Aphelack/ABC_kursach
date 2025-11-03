@@ -24,31 +24,32 @@ int main(int argc, char* argv[]) {
     std::cout << "  Memory: " << (system_info.total_memory / (1024.0 * 1024.0 * 1024.0)) << " GB" << std::endl;
     std::cout << "  OS: " << system_info.os_name << " " << system_info.os_version << std::endl;
     
-    // Configure benchmark
+    // Load configuration from file or use defaults
     BenchmarkConfig config;
-    config.n_estimators = {50, 100, 200};
-    config.max_depth = 15;  // Increased depth for better performance
-    config.num_runs = 3;
-    config.random_state = 42;
-    config.test_size = 0.2;
-    config.n_threads = -1; // Use all cores
+    std::string config_file = "benchmark_config.json";
+    std::string dataset_path = "../dataset/creditcard.csv";
+    
+    // Parse command line arguments
+    if (argc > 1) {
+        config_file = argv[1];
+    }
+    if (argc > 2) {
+        dataset_path = argv[2];
+    }
+    
+    // Load configuration
+    std::cout << "\nLoading configuration..." << std::endl;
+    config = Utils::load_config_from_file(config_file);
     
     // Load or generate data
     Dataset data;
     std::string dataset_name = "creditcard";
     
-    // Use credit card fraud dataset by default (1% sample)
-    std::string creditcard_path = "../dataset/creditcard.csv";
-    
-    if (argc > 1) {
-        creditcard_path = argv[1];
-    }
-    
     try {
-        std::cout << "\nLoading credit card fraud dataset from: " << creditcard_path << std::endl;
+        std::cout << "\nLoading credit card fraud dataset from: " << dataset_path << std::endl;
         std::cout << "Using full dataset for benchmarking..." << std::endl;
-        data = DataLoader::load_creditcard_data(creditcard_path, 1.0);  // Full dataset
-        dataset_name = creditcard_path;
+        data = DataLoader::load_creditcard_data(dataset_path, 1.0);  // Full dataset
+        dataset_name = dataset_path;
         std::cout << "Dataset loaded successfully!" << std::endl;
         std::cout << "  Samples: " << data.n_samples << std::endl;
         std::cout << "  Features: " << data.n_features << " (Time + V1-V28 + Amount)" << std::endl;
@@ -94,7 +95,8 @@ int main(int argc, char* argv[]) {
     
     std::cout << "Results:" << std::endl;
     for (const auto& result : results) {
-        std::cout << "\n  " << result.n_estimators << " estimators:" << std::endl;
+        std::cout << "\n  " << result.n_estimators << " estimators, " 
+                  << result.n_threads << " threads:" << std::endl;
         std::cout << "    Time: " << result.avg_time << " ± " << result.std_time << " sec" << std::endl;
         std::cout << "    F1-Score: " << (result.avg_f1_score * 100.0) << " ± " 
                   << (result.std_f1_score * 100.0) << " %" << std::endl;

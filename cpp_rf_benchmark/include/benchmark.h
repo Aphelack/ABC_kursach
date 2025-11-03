@@ -16,6 +16,7 @@ public:
 private:
     BenchmarkResult run_single_config(
         int n_estimators,
+        int n_threads,
         const TrainTestSplit& data
     );
     

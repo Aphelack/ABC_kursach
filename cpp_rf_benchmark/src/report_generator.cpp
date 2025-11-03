@@ -38,13 +38,20 @@ void ReportGenerator::generate_json_report(
     };
     
     // Configuration
+    json test_pairs_json = json::array();
+    for (const auto& pair : config.test_pairs) {
+        test_pairs_json.push_back({
+            {"n_estimators", pair.n_estimators},
+            {"n_threads", pair.n_threads}
+        });
+    }
+    
     report["config"] = {
-        {"n_estimators", config.n_estimators},
+        {"test_pairs", test_pairs_json},
         {"max_depth", config.max_depth},
         {"num_runs", config.num_runs},
         {"random_state", config.random_state},
-        {"test_size", config.test_size},
-        {"n_threads", config.n_threads}
+        {"test_size", config.test_size}
     };
     
     // Results
@@ -52,6 +59,7 @@ void ReportGenerator::generate_json_report(
     for (const auto& result : results) {
         json result_json = {
             {"n_estimators", result.n_estimators},
+            {"n_threads", result.n_threads},
             {"avg_time", result.avg_time},
             {"std_time", result.std_time},
             {"avg_f1_score", result.avg_f1_score},
@@ -62,6 +70,7 @@ void ReportGenerator::generate_json_report(
             {"run_f1_scores", result.run_f1_scores},
             {"cpu_metrics", {
                 {"n_cores", result.cpu_metrics.n_cores},
+                {"n_threads", result.cpu_metrics.n_threads},
                 {"avg_usage", result.cpu_metrics.avg_usage},
                 {"max_usage", result.cpu_metrics.max_usage},
                 {"per_core_usage", result.cpu_metrics.per_core_usage},
@@ -97,9 +106,12 @@ void ReportGenerator::generate_json_report(
         report["summary"] = {
             {"best_f1_score", results[best_f1_idx].avg_f1_score},
             {"best_f1_score_estimators", results[best_f1_idx].n_estimators},
+            {"best_f1_score_threads", results[best_f1_idx].n_threads},
             {"fastest_time", results[fastest_idx].avg_time},
             {"fastest_estimators", results[fastest_idx].n_estimators},
+            {"fastest_threads", results[fastest_idx].n_threads},
             {"most_efficient_estimators", results[most_efficient_idx].n_estimators},
+            {"most_efficient_threads", results[most_efficient_idx].n_threads},
             {"timestamp", Utils::get_timestamp()}
         };
     }

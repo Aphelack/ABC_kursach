@@ -1,4 +1,5 @@
 #include "utils.h"
+#include <nlohmann/json.hpp>
 #include <fstream>
 #include <sstream>
 #include <ctime>
@@ -9,6 +10,9 @@
 #include <thread>
 #include <sys/utsname.h>
 #include <sys/sysinfo.h>
+#include <iostream>
+
+using json = nlohmann::json;
 
 namespace rf_benchmark {
 
@@ -218,6 +222,128 @@ bool Utils::file_exists(const std::string& filename) {
 
 std::string Utils::get_report_filename(const std::string& cpu_name) {
     return "rf_benchmark_" + cpu_name + "_" + get_timestamp() + ".json";
+}
+
+BenchmarkConfig Utils::load_config_from_file(const std::string& filename) {
+    BenchmarkConfig config;
+    
+    if (!file_exists(filename)) {
+        std::cerr << "Warning: Config file '" << filename << "' not found. Using default configuration." << std::endl;
+        return config;
+    }
+    
+    try {
+        std::ifstream file(filename);
+        json j;
+        file >> j;
+        
+        // Load basic parameters
+        if (j.contains("max_depth")) {
+            config.max_depth = j["max_depth"];
+        }
+        if (j.contains("num_runs")) {
+            config.num_runs = j["num_runs"];
+        }
+        if (j.contains("random_state")) {
+            config.random_state = j["random_state"];
+        }
+        if (j.contains("test_size")) {
+            config.test_size = j["test_size"];
+        }
+        
+        // Clear default test pairs
+        config.test_pairs.clear();
+        
+        // Handle different configuration formats
+        bool has_n_estimators = j.contains("n_estimators");
+        bool has_n_threads = j.contains("n_threads");
+        bool has_test_pairs = j.contains("test_pairs");
+        
+        if (has_test_pairs) {
+            // Direct pairs format: [{"n_estimators": 1, "n_threads": 1}, ...]
+            for (const auto& pair : j["test_pairs"]) {
+                int estimators = pair["n_estimators"];
+                int threads = pair["n_threads"];
+                config.test_pairs.emplace_back(estimators, threads);
+            }
+        } else if (has_n_estimators && has_n_threads) {
+            // Separate arrays or values
+            std::vector<int> estimators_list;
+            std::vector<int> threads_list;
+            
+            // Parse n_estimators
+            if (j["n_estimators"].is_array()) {
+                estimators_list = j["n_estimators"].get<std::vector<int>>();
+            } else {
+                estimators_list.push_back(j["n_estimators"]);
+            }
+            
+            // Parse n_threads
+            if (j["n_threads"].is_array()) {
+                threads_list = j["n_threads"].get<std::vector<int>>();
+            } else {
+                threads_list.push_back(j["n_threads"]);
+            }
+            
+            // Create pairs
+            if (estimators_list.size() == threads_list.size()) {
+                // Same size - create pairs by index
+                for (size_t i = 0; i < estimators_list.size(); ++i) {
+                    config.test_pairs.emplace_back(estimators_list[i], threads_list[i]);
+                }
+            } else if (estimators_list.size() == 1) {
+                // Single estimator value - pair with each thread value
+                for (int threads : threads_list) {
+                    config.test_pairs.emplace_back(estimators_list[0], threads);
+                }
+            } else if (threads_list.size() == 1) {
+                // Single thread value - pair with each estimator value
+                for (int estimators : estimators_list) {
+                    config.test_pairs.emplace_back(estimators, threads_list[0]);
+                }
+            } else {
+                // Cartesian product - all combinations
+                for (int estimators : estimators_list) {
+                    for (int threads : threads_list) {
+                        config.test_pairs.emplace_back(estimators, threads);
+                    }
+                }
+            }
+        } else if (has_n_estimators) {
+            // Only estimators provided - use default threads (-1)
+            std::vector<int> estimators_list;
+            if (j["n_estimators"].is_array()) {
+                estimators_list = j["n_estimators"].get<std::vector<int>>();
+            } else {
+                estimators_list.push_back(j["n_estimators"]);
+            }
+            
+            for (int estimators : estimators_list) {
+                config.test_pairs.emplace_back(estimators, -1);
+            }
+        }
+        
+        // If no pairs were created, use defaults
+        if (config.test_pairs.empty()) {
+            std::cerr << "Warning: No valid test pairs found in config. Using defaults." << std::endl;
+            config.test_pairs.emplace_back(50, -1);
+            config.test_pairs.emplace_back(100, -1);
+            config.test_pairs.emplace_back(200, -1);
+        }
+        
+        std::cout << "Configuration loaded from '" << filename << "'" << std::endl;
+        std::cout << "  Test pairs: ";
+        for (const auto& pair : config.test_pairs) {
+            std::cout << "(" << pair.n_estimators << ", " << pair.n_threads << ") ";
+        }
+        std::cout << std::endl;
+        
+    } catch (const std::exception& e) {
+        std::cerr << "Error loading config file: " << e.what() << std::endl;
+        std::cerr << "Using default configuration." << std::endl;
+    }
+    
+    return config;
 }
 
 } // namespace rf_benchmark

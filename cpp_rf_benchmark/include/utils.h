@@ -35,6 +35,7 @@ public:
     // File utilities
     static bool file_exists(const std::string& filename);
     static std::string get_report_filename(const std::string& cpu_name);
+    static BenchmarkConfig load_config_from_file(const std::string& filename);
 };
 
 class Timer {

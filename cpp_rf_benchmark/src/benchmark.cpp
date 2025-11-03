@@ -17,22 +17,22 @@ std::vector<BenchmarkResult> Benchmark::run(const TrainTestSplit& data) {
     std::cout << "========================================\n" << std::endl;
     
     std::cout << "Configuration:" << std::endl;
-    std::cout << "  Estimators to test: ";
-    for (int n : config_.n_estimators) {
-        std::cout << n << " ";
+    std::cout << "  Test pairs (estimators, threads): ";
+    for (const auto& pair : config_.test_pairs) {
+        std::cout << "(" << pair.n_estimators << ", " << pair.n_threads << ") ";
     }
     std::cout << std::endl;
     std::cout << "  Max depth: " << config_.max_depth << std::endl;
     std::cout << "  Runs per config: " << config_.num_runs << std::endl;
-    std::cout << "  Threads: " << config_.n_threads << std::endl;
     std::cout << "  Train samples: " << data.train.n_samples << std::endl;
     std::cout << "  Test samples: " << data.test.n_samples << std::endl;
     std::cout << "  Features: " << data.train.n_features << std::endl;
     std::cout << "  Classes: " << data.train.n_classes << "\n" << std::endl;
     
-    for (int n_est : config_.n_estimators) {
-        std::cout << "Testing " << n_est << " estimators..." << std::endl;
-        BenchmarkResult result = run_single_config(n_est, data);
+    for (const auto& pair : config_.test_pairs) {
+        std::cout << "Testing " << pair.n_estimators << " estimators with " 
+                  << pair.n_threads << " threads..." << std::endl;
+        BenchmarkResult result = run_single_config(pair.n_estimators, pair.n_threads, data);
         results.push_back(result);
         
         std::cout << "  Avg time: " << result.avg_time << " sec" << std::endl;
@@ -48,10 +48,12 @@ std::vector<BenchmarkResult> Benchmark::run(const TrainTestSplit& data) {
 
 BenchmarkResult Benchmark::run_single_config(
     int n_estimators,
+    int n_threads,
     const TrainTestSplit& data
 ) {
     BenchmarkResult result;
     result.n_estimators = n_estimators;
+    result.n_threads = n_threads;
     result.run_times.resize(config_.num_runs);
     result.run_f1_scores.resize(config_.num_runs);
     
@@ -63,7 +65,7 @@ BenchmarkResult Benchmark::run_single_config(
         RandomForest rf(
             n_estimators,
             config_.max_depth,
-            config_.n_threads,
+            n_threads,
             config_.random_state + run
         );
         

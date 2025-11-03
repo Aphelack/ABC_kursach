@@ -28,22 +28,32 @@ struct TrainTestSplit {
     Dataset test;
 };
 
+struct EstimatorThreadPair {
+    int n_estimators;
+    int n_threads;
+    
+    EstimatorThreadPair(int est = 50, int threads = -1) 
+        : n_estimators(est), n_threads(threads) {}
+};
+
 struct BenchmarkConfig {
-    std::vector<int> n_estimators;
+    std::vector<EstimatorThreadPair> test_pairs;
     int max_depth;
     int num_runs;
     int random_state;
     double test_size;
-    int n_threads;
     
     BenchmarkConfig() 
-        : n_estimators({50, 100, 200})
-        , max_depth(20)
+        : max_depth(20)
         , num_runs(3)
         , random_state(42)
         , test_size(0.2)
-        , n_threads(-1) // -1 means use all available cores
-    {}
+    {
+        // Default configuration
+        test_pairs.push_back(EstimatorThreadPair(50, -1));
+        test_pairs.push_back(EstimatorThreadPair(100, -1));
+        test_pairs.push_back(EstimatorThreadPair(200, -1));
+    }
 };
 
 struct CPUMetrics {
@@ -57,6 +67,7 @@ struct CPUMetrics {
 
 struct BenchmarkResult {
     int n_estimators;
+    int n_threads;
     double avg_time;
     double std_time;
     double avg_f1_score;
