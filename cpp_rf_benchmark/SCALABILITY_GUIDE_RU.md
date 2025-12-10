@@ -65,10 +65,10 @@ chmod +x run_scalability.sh
 
 ```bash
 # Эксперимент 1: Масштабируемость по потокам
-./build/rf_benchmark ../dataset/creditcard.csv config_scalability_threads.json
+./build/rf_benchmark config_scalability_threads.json ../dataset/creditcard.csv
 
 # Эксперимент 2: Масштабируемость по деревьям
-./build/rf_benchmark ../dataset/creditcard.csv config_scalability_estimators.json
+./build/rf_benchmark config_scalability_estimators.json ../dataset/creditcard.csv
 ```
 
 ### 3. Анализ результатов

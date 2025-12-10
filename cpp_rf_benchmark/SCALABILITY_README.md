@@ -256,7 +256,7 @@ pip3 install matplotlib seaborn numpy
 | Analyze one CPU | `python3 scalability_analysis.py report.json` |
 | Compare CPUs | `python3 compare_scalability.py r1.json r2.json` |
 | Interactive help | `python3 example_analysis.py` |
-| Custom experiment | `./build/rf_benchmark <dataset> <config>` |
+| Custom experiment | `./build/rf_benchmark <config> <dataset>` |
 | View example | See existing `rf_benchmark_*.json` files |
 
 ## 📚 What You Get

@@ -52,7 +52,7 @@ run_benchmark() {
     echo "Config: $config_file"
     
     # Run benchmark
-    "$BENCHMARK_EXEC" "$DATASET" "$config_file"
+    "$BENCHMARK_EXEC" "$config_file" "$DATASET"
     
     # Find the most recent JSON report
     LATEST_REPORT=$(ls -t rf_benchmark_*.json | head -1)
