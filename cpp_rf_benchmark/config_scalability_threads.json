@@ -1,0 +1,15 @@
+{
+  "max_depth": 15,
+  "num_runs": 5,
+  "random_state": 42,
+  "test_size": 0.2,
+  "test_pairs": [
+    {"n_estimators": 100, "n_threads": 1},
+    {"n_estimators": 100, "n_threads": 2},
+    {"n_estimators": 100, "n_threads": 4},
+    {"n_estimators": 100, "n_threads": 8},
+    {"n_estimators": 100, "n_threads": 16},
+    {"n_estimators": 100, "n_threads": 32},
+    {"n_estimators": 100, "n_threads": -1}
+  ]
+}
